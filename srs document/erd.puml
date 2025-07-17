@@ -1,0 +1,75 @@
+@startuml
+!define table(x) class x << (T,#FFAAAA) >>
+!define primaryKey(x) <u>x</u>
+!define foreignKey(x) <i>x</i>
+
+' ========== Tables ==========
+table(Pegawai) {
+  primaryKey(id_pegawai): UUID
+  nama: String
+  nip: String
+  email: String
+  id_jabatan: UUID
+}
+
+table(Akun) {
+  primaryKey(id_akun): UUID
+  foreignKey(id_pegawai): UUID
+  username: String
+  password: String
+  role: String
+}
+
+table(Presensi) {
+  primaryKey(id_presensi): UUID
+  foreignKey(id_pegawai): UUID
+  tanggal: Date
+  waktu_masuk: Time
+  waktu_keluar: Time
+  tempat_masuk: String
+  status: String
+}
+
+table(Cuti) {
+  primaryKey(id_cuti): UUID
+  foreignKey(id_pegawai): UUID
+  tanggal_mulai: Date
+  tanggal_selesai: Date
+  alasan: String
+  status: String
+  tanggal_pengajuan: Date
+}
+
+table(SlipGaji) {
+  primaryKey(id_slip): UUID
+  foreignKey(id_pegawai): UUID
+  bulan: Int
+  tahun: Int
+  jumlah: Double
+  file_url: String
+}
+
+table(Jabatan) {
+  primaryKey(id_jabatan): UUID
+  nama: String
+  tingkat: Int
+}
+
+table(RekomendasiJabatan) {
+  primaryKey(id_rekomendasi): UUID
+  foreignKey(id_pegawai): UUID
+  foreignKey(id_jabatan_baru): UUID
+  tanggal_rekomendasi: Date
+  status: String
+}
+
+' ========== Relationships ==========
+Pegawai ||--o{ Akun : has
+Pegawai ||--o{ Presensi : records
+Pegawai ||--o{ Cuti : submits
+Pegawai ||--o{ SlipGaji : receives
+Pegawai }o--|| Jabatan : assigned_to
+Pegawai ||--o{ RekomendasiJabatan : is_recommended
+RekomendasiJabatan }o--|| Jabatan : target_position
+
+@enduml
