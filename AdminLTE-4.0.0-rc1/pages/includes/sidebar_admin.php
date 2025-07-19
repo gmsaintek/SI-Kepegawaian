@@ -27,25 +27,25 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="allpegawai.php" class="nav-link">
+                            <a href="list_pegawai.php" class="nav-link">
                                 <i class="nav-icon bi bi-circle"></i>
                                 <p>Pegawai</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="allpenggajian.php" class="nav-link">
+                            <a href="list_penggajian.php" class="nav-link">
                                 <i class="nav-icon bi bi-circle"></i>
                                 <p>Penggajian</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="allpresensi.php" class="nav-link">
+                            <a href="list_presensi.php" class="nav-link">
                                 <i class="nav-icon bi bi-circle"></i>
                                 <p>Presensi</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="allizin.php" class="nav-link">
+                            <a href="list_izin.php" class="nav-link">
                                 <i class="nav-icon bi bi-circle"></i>
                                 <p>Persetujuan Izin</p>
                             </a>
@@ -54,26 +54,26 @@
                 </li>
                 <li class="nav-header">Kenaikan Jabatan</li>
                 <li class="nav-item">
-                    <a href="rekomenup.php" class="nav-link">
+                    <a href="rekomendasi_kenaikan.php" class="nav-link">
                         <i class="nav-icon bi bi-file-earmark-person"></i>
                         <p>Rekomendasi</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="persetujuanup.php" class="nav-link">
+                    <a href="persetujuan_kenaikan.php" class="nav-link">
                         <i class="nav-icon bi bi-cash"></i>
                         <p>Persetujuan</p>
                     </a>
                 </li>
                 <li class="nav-header">Personal Input</li>
                 <li class="nav-item">
-                    <a href="addpresensi.php" class="nav-link">
+                    <a href="../all/add_presensi.php" class="nav-link">
                         <i class="nav-icon bi bi-calendar-check"></i>
                         <p>Presensi</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="addizin.php" class="nav-link">
+                    <a href="../all/add_izin.php" class="nav-link">
                         <i class="nav-icon bi bi-hand-thumbs-up"></i>
                         <p>Izin Cuti</p>
                     </a>

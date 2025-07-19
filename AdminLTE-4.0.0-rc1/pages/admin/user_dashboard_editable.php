@@ -30,8 +30,8 @@
   </head>
 <body class="layout-fixed sidebar-expand-lg bg-body-tertiary">
   <div class="app-wrapper">
-    <?php include '../features/navbar.php';?>
-    <?php include '../features/sidebar.php';?>
+    <?php include 'features/navbar.php';?>
+    <?php include 'features/sidebar.php';?>
     <main class="app-main">
       <div class="app-content-header">
         <div class="container-fluid">
@@ -310,8 +310,9 @@
           </div>
         </div>  
       </div>
+          <?php include 'features/footer.php';?>
     </main>
-    <?php include '../features/footer.php';?>
+
   </div>
   
   <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
