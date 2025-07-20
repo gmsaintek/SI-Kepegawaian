@@ -11,7 +11,7 @@
                     <img src="../../dist/assets/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image" style="width: 32px; height: 32px;"/>
                 </div>
                 <div class="info">
-                    <a href="dashboard.php" class="d-block fw-bold text-white">(name)</a>
+                    <a href="user_dashboard_editable.php" class="d-block fw-bold text-white">(name)</a>
                     <small class="text-muted">Admin Desa</small>
                 </div>
             </div>
@@ -67,13 +67,13 @@
                 </li>
                 <li class="nav-header">Personal Input</li>
                 <li class="nav-item">
-                    <a href="../all/add_presensi.php" class="nav-link">
+                    <a href="add_presensi.php" class="nav-link">
                         <i class="nav-icon bi bi-calendar-check"></i>
                         <p>Presensi</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="../all/add_izin.php" class="nav-link">
+                    <a href="add_izin.php" class="nav-link">
                         <i class="nav-icon bi bi-hand-thumbs-up"></i>
                         <p>Izin Cuti</p>
                     </a>

@@ -3,54 +3,41 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Input Presensi</title>
-    <!--begin::Primary Meta Tags-->
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="title" content="AdminLTE v4 | Dashboard" />
-    <meta name="author" content="ColorlibHQ" />
-    <meta
-      name="description"
-      content="AdminLTE is a Free Bootstrap 5 Admin Dashboard, 30 example pages using Vanilla JS."
-    />
-    <meta
-      name="keywords"
-      content="bootstrap 5, bootstrap, bootstrap 5 admin dashboard, bootstrap 5 dashboard, bootstrap 5 charts, bootstrap 5 calendar, bootstrap 5 datepicker, bootstrap 5 tables, bootstrap 5 datatable, vanilla js datatable, colorlibhq, colorlibhq dashboard, colorlibhq admin dashboard"
-    />
-    <!--end::Primary Meta Tags-->
-    <!-- Font -->
+    <meta name="title" content="Input Presensi" />
+    <meta name="author" content="Gantari Mengwi 2025" />
+    <meta name="description" content="Sisforpeg Desa"/>
+
     <link href="https://cdn.jsdelivr.net/npm/@fontsource/source-sans-3@5.0.12/index.css" rel="stylesheet">
-    <!-- Icons -->
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <!-- Stylesheet -->
+
     <link rel="stylesheet" href="../../dist/css/adminlte.css" />
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
   </head>
 <body class="layout-fixed sidebar-expand-lg bg-body-tertiary">
   <div class="app-wrapper">
-    <?php include '../features/navbar.php';?>
-    <?php include '../features/sidebar.php';?>
+    <?php include '../includes/header.php';?>
+    <?php include '../includes/sidebar_user.php';?>
     <main class="app-main">
       <div class="app-content-header">
         <div class="container-fluid">
           <div class="row">
             <div class="col-sm-6">
-              <h3 class="mb-0">
-                Input Presensi
-              </h3>
+              <h3 class="mb-0">Input Presensi</h3>
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-end">
                 <li class="breadcrumb-item">
-                  <a href="index.php">
-                    Home
-                  </a>
+                  <a href="index.php">Home</a>
                 </li>
-                <li class="breadcrumb-item">
-                  Input Presensi
-                </li>
+                <li class="breadcrumb-item">Input Presensi</li>
               </ol>
             </div>
           </div>
@@ -60,10 +47,18 @@
         <div class="container-fluid">
           <div class="row">
             <div class="d-flex gap-2">
-              <button type="button" class="btn btn-danger mb-2">
+              <button type="button" class="btn btn-success mb-2" data-bs-toggle="modal" data-bs-target="#presensi_input">
                 <i class="bi bi-plus-lg"></i>
-                <span>Presensi</span>
+                <span>Presensi Masuk</span>
               </button>
+              <!-- presensi pulang can't be pressed unless presensi masuk is inputted-->
+              <button type="button" class="btn btn-danger mb-2" data-bs-toggle="modal" data-bs-target="#presensi_input">
+                <i class="bi bi-plus-lg"></i>
+                <span>Presensi Pulang</span>
+              </button>
+              <div class="modal-container">
+                <?php include "modals/presensi/input.php";?>
+              </div>
             </div>
           </div>
           <div class="row">
@@ -105,7 +100,7 @@
         </div>  
       </div>
     </main>
-    <?php include '../features/footer.php';?>
+    <?php include '../includes/footer.php';?>
   </div>
   
   <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
@@ -114,6 +109,8 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
 
+
+  <!--for now the js is weird since izin / absent / still have clock in/out times-->
   <script>
   const calendarBody = document.getElementById("calendarBody");
   const monthYear = document.getElementById("monthYear");
@@ -197,7 +194,16 @@
         }
 
         col.className += ` ${bgClass}`;
-        col.textContent = text;
+        const clockIn = `${String(7 + Math.floor(Math.random() * 2)).padStart(2, '0')}:${String(10 + Math.floor(Math.random() * 40)).padStart(2, '0')}`;
+        const clockOut = `${String(16 + Math.floor(Math.random() * 2)).padStart(2, '0')}:${String(0 + Math.floor(Math.random() * 59)).padStart(2, '0')}`;
+
+        col.innerHTML = `
+          <div class="fw-bold">${text}</div>
+          <div class="small mt-1">
+            <div>⏱ <span class="text-dark">${clockIn}</span></div>
+            <div>🕔 <span class="text-dark">${clockOut}</span></div>
+          </div>
+        `;
         row.appendChild(col);
       }
 

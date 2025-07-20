@@ -64,14 +64,13 @@
                       <th>No.</th>
                       <th>NIP</th>
                       <th>Nama</th>
-                      <th>Tempat, Tanggal Lahir</th>
-                      <th>Jenis Kelamin</th>
+                      <th width="70px">Tempat</th>
+                      <th>Tanggal Lahir</th>
+                      <th width="20px">Jenis Kelamin</th>
                       <th>Divisi</th>
                       <th>Jabatan</th>
-                      <th>Status Kepegawaian</th>
-                      <th>Pendidikan</th>
-                      <th>Alamat</th>
-                      <th width="50px">Aksi</th>
+                      <th width="50px">Status Kepegawaian</th>
+                      <th>Aksi</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -79,24 +78,23 @@
                       <td>1.</td>
                       <td>256821</td>
                       <td>Lorem Ipsum</td>
-                      <td>Jakarta, 10/02/1994</td>
+                      <td>Jakarta</td>
+                      <td>10/02/1994</td>
                       <td>P</td>
                       <td>Kaur TU</td>
                       <td>Staf</td>
                       <td>Tetap</td>
-                      <td>S1</td>
-                      <td>Jl. Dolor Sit, Amet 32991</td>
                       <td>
                         <div class="d-flex gap-2">
-                          <button class="btn btn-sm btn-primary">
+                          <a href="user_dashboard_editable.php" class="btn btn-sm btn-info">
                             <i class="bi bi-eye"></i>
-                          </button>
-                          <button class="btn btn-sm btn-warning">
-                            <i class="bi bi-pencil-square"></i>
-                          </button>
-                          <button class="btn btn-sm btn-danger">
+                          </a>
+                          <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#konfirmasi_hapus">
                             <i class="bi bi-person-dash"></i>
                           </button>
+                          <div class="modal-container">
+                            <?php include "modals/konfirmasi/hapus.php";?>
+                          </div>
                         </div>
                       </td>
                     </tr>
@@ -110,9 +108,11 @@
       <?php include '../includes/footer.php';?>
     </div>
   </body>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="./dist/js/adminlte.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../dist/js/adminlte.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
 
   <script>
     $(document).ready(function () {

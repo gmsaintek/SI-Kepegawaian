@@ -2,10 +2,10 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>Pegawai Baru</title>
+        <title>Edit Pegawai</title>
     
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="title" content="Pegawai Baru" />
+        <meta name="title" content="Edit Pegawai" />
         <meta name="author" content="ColorlibHQ" />
         <meta name="description" content="Sisforpeg Desa"/>
 
@@ -31,13 +31,13 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-sm-6">
-                                <h3 class="mb-0">Registrasi Pegawai Baru</h3>
+                                <h3 class="mb-0">Edit Pegawai</h3>
                             </div>
                             <div class="col-sm-6">
                                 <ol class="breadcrumb float-sm-end">
                                     <li class="breadcrumb-item"><a href="admin_index.php">Home</a></li>
-                                    <li class="breadcrumb-item"><a href="list_pegawai.php">Data Pegawai</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Registrasi Pegawai Baru</li>
+                                    <li class="breadcrumb-item"><a href="user_dashboard_editable.php">Dashboard</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Edit Pegawai</li>
                                 </ol>
                             </div>
                         </div>
@@ -50,38 +50,38 @@
                                 <h4>Data Pribadi</h4>
                                 <form>
                                     <div class="mb-3">
-                                        <label for="nip" class='form-label'>NIP</label>
+                                        <label for="nip_edit" class='form-label'>NIP</label>
                                         <input type="text" class="form-control" id="nip" required></input>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="image" class="form-label">Pas Foto Berwarna</label>
-                                        <input class="form-control" type="file" id="image" required>
+                                        <label for="image_edit" class="form-label">Pas Foto Berwarna</label>
+                                        <input class="form-control" type="file" id="image_edit" required>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="nama" class="form-label">Nama Lengkap</label>
-                                        <input type="text" class="form-control" id="nama" required>
+                                        <label for="nama_edit" class="form-label">Nama Lengkap</label>
+                                        <input type="text" class="form-control" id="nama_edit" required>
                                     </div>
                                     <div class="row mb-3">
                                         <div class="col">
-                                            <label for="tempatLahir" class="form-label">Tempat Lahir</label>
-                                            <input type="text" class="form-control" id="tempatLahir" required>
+                                            <label for="tempatLahir_edit" class="form-label">Tempat Lahir</label>
+                                            <input type="text" class="form-control" id="tempatLahir_edit" required>
                                         </div>
                                         <div class="col">
-                                            <label for="tanggalLahir" class="form-label">Tanggal Lahir</label>
-                                            <input type="date" class="form-control" id="tanggalLahir" required>
+                                            <label for="tanggalLahir_edit" class="form-label">Tanggal Lahir</label>
+                                            <input type="date" class="form-control" id="tanggalLahir_edit" required>
                                         </div>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="gender" class="form-label">Jenis Kelamin</label>
-                                        <select class="form-select" id="gender" required>
+                                        <label for="gender_edit" class="form-label">Jenis Kelamin</label>
+                                        <select class="form-select" id="gender_edit" required>
                                             <option value="">Pilih...</option>
                                             <option value="Laki-laki">Laki-laki</option>
                                             <option value="Perempuan">Perempuan</option>
                                         </select>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="agama" class="form-label">Agama</label>
-                                        <select class="form-select" id="agama" required>
+                                        <label for="agama_edit" class="form-label">Agama</label>
+                                        <select class="form-select" id="agama_edit" required>
                                             <option>Pilih...</option>
                                             <option>Islam</option>
                                             <option>Kristen</option>
@@ -92,16 +92,16 @@
                                         </select>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="alamat" class="form-label">Alamat</label>
-                                        <textarea class="form-control" id="alamat" rows="2" required></textarea>
+                                        <label for="alamat_edit" class="form-label">Alamat</label>
+                                        <textarea class="form-control" id="alamat_edit" rows="2" required></textarea>
                                     </div>
                                 </form>
                             </div>
                             <div class="col-sm-6">
                                 <h4>Data Jabatan</h4>
                                 <div class="mb-3">
-                                    <label for="divisi" class="form-label">Divisi</label>
-                                    <select class="form-select" id="divisi" required>
+                                    <label for="divisi_edit" class="form-label">Divisi</label>
+                                    <select class="form-select" id="divisi_edit" required>
                                         <option value="">Pilih...</option>
                                         <option value="Sekretaris Desa">Sekretaris Desa</option>
                                         <option value="Kasi Pemerintahan">Kasi Pemerintahan</option>
@@ -113,16 +113,16 @@
                                     </select>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="jabatan" class="form-label">Jabatan</label>
-                                    <select class="form-select" id="jabatan" required>
+                                    <label for="jabatan_edit" class="form-label">Jabatan</label>
+                                    <select class="form-select" id="jabatan_edit" required>
                                         <option value="">Pilih...</option>
                                         <option value="Kepala Bagian">Kepala Bagian</option>
                                         <option value="Staf">Staf</option>
                                     </select>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="status" class="form-label">Status Kerja</label>
-                                    <select class="form-select" id="status" required>
+                                    <label for="status_edit" class="form-label">Status Kerja</label>
+                                    <select class="form-select" id="status_edit" required>
                                         <option value="">Pilih...</option>
                                         <option value="Kepala Bagian">Tetap</option>
                                         <option value="Staf">Magang</option>
@@ -131,20 +131,20 @@
                                 </div>
                                 <div class="row mb-3">
                                     <div class="col">
-                                        <label for="skCpns" class="form-label">No. SK CPNS</label>
-                                        <input type="text" class="form-control" id="skCpns" required>
+                                        <label for="skCpns_edit" class="form-label">No. SK CPNS</label>
+                                        <input type="text" class="form-control" id="skCpns_edit" required>
                                     </div>
                                     <div class="col">
-                                        <label for="skCpnsfile" class="form-label">SK CPNS</label>
-                                        <input class="form-control" type="file" id="skCpnsfile" required>
+                                        <label for="skCpnsfile_edit" class="form-label">SK CPNS</label>
+                                        <input class="form-control" type="file" id="skCpnsfile_edit" required>
                                     </div>      
                                 </div>
                                 <hr>
                                 <h4>Data lain</h4>
                                 <div class="row mb-3">
                                     <div class="col">
-                                        <label for="pendidikan" class="form-label">Pendidikan Terakhir</label>
-                                        <select class="form-select" id="pendidikan" required>
+                                        <label for="pendidikan_edit" class="form-label">Pendidikan Terakhir</label>
+                                        <select class="form-select" id="pendidikan_edit" required>
                                             <option value="">Pilih...</option>
                                             <option value="Sekretaris Desa">S1</option>
                                             <option value="Kasi Pemerintahan">S2</option>
@@ -152,17 +152,17 @@
                                         </select>
                                     </div>
                                     <div class="col">
-                                        <label for="pendidikanfile" class="form-label">Ijazah Terakhir</label>
-                                        <input class="form-control" type="file" id="pendidikanfile" required>
+                                        <label for="pendidikanfile_edit" class="form-label">Ijazah Terakhir</label>
+                                        <input class="form-control" type="file" id="pendidikanfile_edit" required>
                                     </div>      
                                 </div>
                                 <div class="mb-3">
-                                    <label for="contactno" class="form-label">Nomor HP</label>
-                                    <input class="form-control" type="tel" id="contactno" required>
+                                    <label for="contactno_edit" class="form-label">Nomor HP</label>
+                                    <input class="form-control" type="tel" id="contactno_edit" required>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="email" class="form-label">Email</label>
-                                    <input class="form-control" type="email" id="email" required>
+                                    <label for="email_edit" class="form-label">Email</label>
+                                    <input class="form-control" type="email" id="email_edit" required>
                                 </div>
                             </div>
                         </div>
