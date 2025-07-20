@@ -28,49 +28,14 @@
                 </div>
                 <div class="mb-3">
                     <label for="criteria_pengaturan" class="form-label">Jumlah Kriteria</label>
-                    <input type="number" class="form-control" id="criteria_pengaturan" required>
+                    <input type="number" class="form-control" id="criteria_pengaturan" required min="1" max="10">
                 </div>
+
+                <div id="dynamicCriteriaContainer"></div>
                 <!-- next part comes up based on criterias used -->
                 <!-- tergantung kriteria yang mana, either weight or match will come out -->
                 <!-- e.g. kriterianya presensi (set as benefit) - yang keluar weight / kriterianya pendidikan terakhir - yang keluar match-->
                 <!-- for now, aku set kriterianya as 2 -->
-                <div class="row mb-3">
-                    <!-- example pertama: kita ambil jumlah presensi-->
-                    <div class="col">
-                        <label for="criteria_1" class="form-label">Kriteria 1</label>
-                        <select class="form-select" id="pendidikan" required>
-                            <option value="">Pilih...</option>
-                            <option value="Jumlah Presensi">Jumlah Presensi (1 tahun terakhir)</option>
-                            <option value="Pendidikan Terakhir">Pendidikan Terakhir</option>
-                            <option value="Jumlah Izin">Jumlah Izin</option>
-                        </select>
-                    </div>
-                    <div class="col">
-                        <label for="criteria_weight_1" class="form-label">Bobot</label>
-                        <input type="number" class="form-control" id="criteria_weight_1" max="1" required>
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <!-- example kedua: kita ambil pendidikan terakhir-->
-                    <div class="col">
-                        <label for="criteria_1" class="form-label">Kriteria 1</label>
-                        <select class="form-select" id="pendidikan" required>
-                            <option value="">Pilih...</option>
-                            <option value="Jumlah Presensi">Jumlah Presensi (1 tahun terakhir)</option>
-                            <option value="Pendidikan Terakhir">Pendidikan Terakhir</option>
-                            <option value="Jumlah Izin">Jumlah Izin</option>
-                        </select>
-                    </div>
-                    <div class="col">
-                        <label for="criteria_weight_2" class="form-label">Pencocokan</label>
-                        <select class="form-select" id="criteria_weight_2" required>
-                            <option value="">Pilih...</option>
-                            <option value="S1">S1</option>
-                            <option value="S2">S2</option>
-                            <option value="S3">S3</option>
-                        </select>
-                    </div>
-                </div>
             </div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
@@ -79,3 +44,64 @@
         </div>
     </div>
 </div>
+
+<script>
+    const criteriaList = [
+        { label: "Umur", type: "categorical", options: ["<25", "25-35", "36-45", ">45"] },
+        { label: "Pendidikan Terakhir", type: "categorical", options: ["S1", "S2", "S3"] },
+        { label: "Jumlah Presensi", type: "numeric" },
+        { label: "Jumlah Izin", type: "numeric" },
+    ];
+
+    const container = document.getElementById("dynamicCriteriaContainer");
+    const criteriaInput = document.getElementById("criteria_pengaturan");
+
+    criteriaInput.addEventListener("input", () => {
+        const count = parseInt(criteriaInput.value);
+        container.innerHTML = ""; // clear
+
+        for (let i = 1; i <= count; i++) {
+            const row = document.createElement("div");
+            row.className = "row mb-3";
+            row.innerHTML = `
+                <div class="col">
+                    <label class="form-label">Kriteria ${i}</label>
+                    <select class="form-select criteria-select" data-index="${i}" required>
+                        <option value="">Pilih...</option>
+                        ${criteriaList.map(c => `<option value="${c.label}">${c.label}</option>`).join("")}
+                    </select>
+                </div>
+                <div class="col dynamic-input" id="dynamicInput_${i}">
+                    <!-- Filled by JS depending on selection -->
+                </div>
+            `;
+            container.appendChild(row);
+        }
+    });
+
+    container.addEventListener("change", function (e) {
+        if (!e.target.classList.contains("criteria-select")) return;
+
+        const index = e.target.dataset.index;
+        const selected = e.target.value;
+        const criterion = criteriaList.find(c => c.label === selected);
+        const dynamicCol = document.getElementById(`dynamicInput_${index}`);
+
+        if (!criterion) return;
+
+        if (criterion.type === "numeric") {
+            dynamicCol.innerHTML = `
+                <label class="form-label">Bobot</label>
+                <input type="number" step="0.01" max="1" min="0" class="form-control" name="criteria_weight_${index}" required>
+            `;
+        } else if (criterion.type === "categorical") {
+            dynamicCol.innerHTML = `
+                <label class="form-label">Pencocokan</label>
+                <select class="form-select" name="criteria_match_${index}" required>
+                    <option value="">Pilih...</option>
+                    ${criterion.options.map(opt => `<option value="${opt}">${opt}</option>`).join("")}
+                </select>
+            `;
+        }
+    });
+</script>

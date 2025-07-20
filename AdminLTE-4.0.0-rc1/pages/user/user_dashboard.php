@@ -177,7 +177,7 @@
                                 <i class="bi bi-eye"></i>
                               </button>
                               <div class="modal-container">
-                                <?php include "modals/penggajian_view.php";?>
+                                <?php include "modal/penggajian_view.php";?>
                               </div>
                             </div>
                           </td>

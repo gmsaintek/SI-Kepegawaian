@@ -59,7 +59,7 @@
                                 </button>
                             </div>
                         </div>
-                        <!-- setelah semua pengaturan selesai, table yang akan keluar based on the criteria-->
+                        <!-- setelah semua pengaturan selesai, table yang akan keluar based on the criteria / for now chosen is jumlah presensi and pendidikan terakhir -->
                         <div class="row">
                             <div class="col-md-12">
                                 <table id="tablePegawai" class="table table-striped">
@@ -217,7 +217,9 @@
         <?php include '../includes/footer.php';?>
         </div>
     </body>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="./dist/js/adminlte.js"></script>
+    <script src="../../dist/js/adminlte.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
 </html>
