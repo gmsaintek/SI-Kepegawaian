@@ -57,7 +57,7 @@
                 <span>Presensi Pulang</span>
               </button>
               <div class="modal-container">
-                <?php include "modals/presensi/input.php";?>
+                <?php include "modal/presensi_input.php";?>
               </div>
             </div>
           </div>

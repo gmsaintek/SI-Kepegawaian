@@ -54,15 +54,9 @@
                 </li>
                 <li class="nav-header">Kenaikan Jabatan</li>
                 <li class="nav-item">
-                    <a href="rekomendasi_kenaikan.php" class="nav-link">
+                    <a href="kenaikanjabatan.php" class="nav-link">
                         <i class="nav-icon bi bi-file-earmark-person"></i>
-                        <p>Rekomendasi</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="persetujuan_kenaikan.php" class="nav-link">
-                        <i class="nav-icon bi bi-cash"></i>
-                        <p>Persetujuan</p>
+                        <p>Kenaikan Jabatan</p>
                     </a>
                 </li>
                 <li class="nav-header">Personal Input</li>

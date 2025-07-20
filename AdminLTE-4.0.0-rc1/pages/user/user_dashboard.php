@@ -24,7 +24,7 @@
 <body class="layout-fixed sidebar-expand-lg bg-body-tertiary">
   <div class="app-wrapper">
     <?php include '../includes/header.php';?>
-    <?php include '../includes/sidebar_admin.php';?>
+    <?php include '../includes/sidebar_user.php';?>
     <main class="app-main">
       <div class="app-content-header">
         <div class="container-fluid">
@@ -177,7 +177,7 @@
                                 <i class="bi bi-eye"></i>
                               </button>
                               <div class="modal-container">
-                                <?php include "modals/penggajian/view.php";?>
+                                <?php include "modals/penggajian_view.php";?>
                               </div>
                             </div>
                           </td>

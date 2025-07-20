@@ -36,6 +36,7 @@
                                 <ol class="breadcrumb float-sm-end">
                                     <li class="breadcrumb-item"><a href="#">Home</a></li>
                                     <li class="breadcrumb-item">Welcome, (name)!</li>
+                                    <li class="breadcrumb-item">Periode 2025</li>
                                 </ol>
                             </div>
                         </div>
@@ -51,7 +52,7 @@
                                             <h3>(count)</h3>
                                             <p>Sisa hari izin cuti</p>
                                         </div>
-                                        <a href="#" class="small-box-footer link-light link-underline-opacity-0 link-underline-opacity-50-hover">
+                                        <a href="add_izin.php" class="small-box-footer link-light link-underline-opacity-0 link-underline-opacity-50-hover">
                                             Lebih Lanjut
                                         </a>
                                     </div>

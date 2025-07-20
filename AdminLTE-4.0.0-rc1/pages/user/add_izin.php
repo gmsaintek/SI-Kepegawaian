@@ -23,8 +23,8 @@
   </head>
   <body class="layout-fixed sidebar-expand-lg bg-body-tertiary">
     <div class="app-wrapper">
-      <?php include '../features/navbar.php';?>
-      <?php include '../features/sidebar_user.php';?>
+      <?php include '../includes/header.php';?>
+      <?php include '../includes/sidebar_user.php';?>
       <main class="app-main">
         <div class="app-content-header">
           <div class="container-fluid">
@@ -54,17 +54,22 @@
                   </div>
                 </div>
               </div>
+            </div>
+            <div class="row">
               <div class="col-lg-3 col-6">
-                <button type="button" class="btn btn-primary mb-2">
+                <button type="button" class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#izin_create">
                   <i class="bi bi-plus"></i>
                   <span>Izin Cuti</span>
                 </button>
+                <div class="modal-container">
+                  <?php include "modal/form_izin.php";?>
+                </div>
               </div>
             </div>
           </div>
         <div class="container-fluid">
           <div class="col-md-12">
-            <table id="tablePerIzin" class="table table-bordered">
+            <table id="tablePerIzin" class="table table-striped">
               <thead>
                 <tr class="align-middle">
                   <th>No.</th>
@@ -88,7 +93,14 @@
                   <td>
                     <span class="badge text-bg-success">Disetujui</span>
                   </td>
-                  <td>-</td>
+                  <td>
+                    <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#alasanModal">
+                      <i class="bi bi-eye"></i>
+                    </button>
+                    <div class="modal-container">
+                      <?php include "modal/alasan.php";?>
+                    </div>
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -96,7 +108,7 @@
         </div>
       </div>
     </main>
-    <?php include '../features/footer.php';?>
+    <?php include  "../includes/footer.php";?>
     </div>
   </body>
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>

@@ -30,11 +30,6 @@
                             <i class="bi bi-moon-fill me-2"></i>
                         </button>
                     </li>
-                    <li>
-                        <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="auto" aria-pressed="false">
-                            <i class="bi bi-circle-half me-2"></i>
-                        </button>
-                    </li>
                 </ul>
             </li>
         </ul>
