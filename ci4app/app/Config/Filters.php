@@ -34,6 +34,7 @@ class Filters extends BaseFilters
         'forcehttps'    => ForceHTTPS::class,
         'pagecache'     => PageCache::class,
         'performance'   => PerformanceMetrics::class,
+        'auth'          => App\Filters\AuthFilter::class,
     ];
 
     /**
@@ -57,6 +58,7 @@ class Filters extends BaseFilters
         'after' => [
             'pagecache',   // Web Page Caching
             'performance', // Performance Metrics
+        'auth'          => App\Filters\AuthFilter::class,
             'toolbar',     // Debug Toolbar
         ],
     ];
