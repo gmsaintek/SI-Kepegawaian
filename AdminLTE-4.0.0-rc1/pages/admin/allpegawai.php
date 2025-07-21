@@ -1,8 +1,13 @@
+<?php
+require_once '../../backend/db.php';
+$db = get_db();
+$pegawai = $db->query('SELECT * FROM pegawai ORDER BY id DESC')->fetchAll(PDO::FETCH_ASSOC);
+?>
 <!DOCTYPE html>
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Semua Pegawa | Sisforpeg</title>
+    <title>Semua Pegawai | Sisforpeg</title>
     <!--begin::Primary Meta Tags-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="title" content="AdminLTE v4 | Dashboard" />
@@ -60,10 +65,10 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="d-flex gap-2">
-                    <button type="button" class="btn btn-primary mb-2">
+                    <a href="addpegawai.php" class="btn btn-primary mb-2">
                         <i class="bi bi-plus-lg"></i>
                         <span>Pegawai</span>
-                    </button>
+                    </a>
                     <button type="button" class="btn btn-warning mb-2">
                         <i class="bi bi-printer"></i>
                         <span>Cetak Laporan</span>
@@ -88,29 +93,23 @@
                         </tr>
                     </thead>
                     <tbody>
+                    <?php $no=1; foreach($pegawai as $p): ?>
                         <tr>
-                            <td>1</td>
-                            <td>256821</td>
-                            <td>Lorem Ipsum</td>
-                            <td>Jakarta, 10/02/1994</td>
-                            <td>Staf HR</td>
-                            <td>Tetap</td>
-                            <td>S1</td>
-                            <td>Jl. Dolor Sit, Amet 32991</td>
+                            <td><?php echo $no++; ?></td>
+                            <td><?php echo htmlspecialchars($p['nik']); ?></td>
+                            <td><?php echo htmlspecialchars($p['nama']); ?></td>
+                            <td><?php echo htmlspecialchars($p['tanggal_lahir']); ?></td>
+                            <td><?php echo htmlspecialchars($p['jabatan']); ?></td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td><?php echo htmlspecialchars($p['kontak']); ?></td>
                             <td>
-                                <div class="d-flex gap-1">
-                                    <button class="btn btn-sm btn-primary">
-                                        <i class="bi bi-eye"></i>
-                                    </button>
-                                    <button class="btn btn-sm btn-warning">
-                                        <i class="bi bi-pencil-square"></i>
-                                    </button>
-                                    <button class="btn btn-sm btn-danger">
-                                        <i class="bi bi-person-dash"></i>
-                                    </button>
-                                </div>
+                                <a class="btn btn-sm btn-warning" href="editpegawai.php?id=<?php echo $p['id']; ?>">
+                                    <i class="bi bi-pencil-square"></i>
+                                </a>
                             </td>
                         </tr>
+                    <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>
