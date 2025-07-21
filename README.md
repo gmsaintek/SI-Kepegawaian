@@ -9,15 +9,19 @@ Aplikasi sederhana sistem informasi kepegawaian berbasis [CodeIgniter 4](https:/
    cd ci4app
    composer install
    ```
-2. Salin berkas `env` menjadi `.env` lalu jalankan migrasi untuk membuat tabel SQLite:
+2. Salin berkas `env` menjadi `.env`:
    ```bash
    cp env .env
+   ```
+3. Atur nilai `GOOGLE_CLIENT_ID` dan `GOOGLE_CLIENT_SECRET` di file `.env`.
+4. Jalankan migrasi untuk membuat tabel `users` menggunakan berkas `app/Database/Migrations/2025-07-21-000002_CreateUsersTable.php`:
+   ```bash
    php spark migrate
    ```
-3. Jalankan server pengembangan bawaan CodeIgniter:
+5. Jalankan server pengembangan bawaan CodeIgniter:
    ```bash
    php spark serve
    ```
-4. Akses aplikasi melalui `http://localhost:8080`.
+6. Akses aplikasi melalui `http://localhost:8080`.
 
 Database SQLite berada di `ci4app/writable/database.sqlite`.
