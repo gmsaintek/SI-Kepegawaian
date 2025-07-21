@@ -33,10 +33,16 @@ class Auth extends BaseController
             session()->remove('oauth2state');
             return redirect()->to('/');
         }
-        $token = $this->provider->getAccessToken('authorization_code', [
-            'code' => $this->request->getGet('code'),
-        ]);
-        $googleUser = $this->provider->getResourceOwner($token);
+        try {
+            $token = $this->provider->getAccessToken('authorization_code', [
+                'code' => $this->request->getGet('code'),
+            ]);
+            $googleUser = $this->provider->getResourceOwner($token);
+        } catch (\Throwable $e) {
+            log_message('error', 'OAuth callback failed: ' . $e->getMessage());
+            session()->setFlashdata('error', 'Failed to authenticate with Google.');
+            return redirect()->to('/');
+        }
         $data = [
             'google_id' => $googleUser->getId(),
             'email' => $googleUser->getEmail(),
