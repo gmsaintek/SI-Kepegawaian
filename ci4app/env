@@ -70,3 +70,5 @@
 
 GOOGLE_CLIENT_ID="your-google-client-id"
 GOOGLE_CLIENT_SECRET="your-google-client-secret"
+# Comma-separated list of emails that should receive the HR role
+HR_EMAILS="hr@example.com"
