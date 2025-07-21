@@ -7,6 +7,8 @@ $routes->get('/', 'Auth::index');
 $routes->get('/employees', 'Employees::index', ['filter' => 'hr']);
 $routes->get('/employees/create', 'Employees::create', ['filter' => 'hr']);
 $routes->post('/employees/save', 'Employees::save', ['filter' => 'hr']);
+$routes->get('/employees/edit/(:num)', 'Employees::edit/$1', ['filter' => 'hr']);
+$routes->post('/employees/update/(:num)', 'Employees::update/$1', ['filter' => 'hr']);
 $routes->get('/attendance', 'Attendance::index', ['filter' => 'hr']);
 $routes->get('/attendance/create', 'Attendance::create', ['filter' => 'hr']);
 $routes->post('/attendance/save', 'Attendance::save', ['filter' => 'hr']);
