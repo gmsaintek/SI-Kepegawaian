@@ -27,6 +27,7 @@
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu">
                     <li class="nav-item"><a href="<?= site_url('employees') ?>" class="nav-link"><i class="nav-icon fas fa-users"></i><p>Pegawai</p></a></li>
                     <li class="nav-item"><a href="<?= site_url('attendance') ?>" class="nav-link"><i class="nav-icon fas fa-calendar-check"></i><p>Presensi</p></a></li>
+                    <li class="nav-item"><a href="<?= site_url('cuti') ?>" class="nav-link"><i class="nav-icon fas fa-plane"></i><p>Cuti</p></a></li>
                 </ul>
             </nav>
         </div>
