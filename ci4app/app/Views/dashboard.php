@@ -1,5 +1,5 @@
-<?php \$this->extend('layout'); ?>
-<?php \$this->section('content'); ?>
+<?php $this->extend('layout'); ?>
+<?php $this->section('content'); ?>
 <div class="text-center">
     <h2 class="mb-4 animate__animated animate__fadeInDown">Hello, <?= esc($user['name']) ?>!</h2>
     <p class="lead">You are logged in as <strong><?= esc($user['role']) ?></strong>.</p>
@@ -33,4 +33,4 @@ $(function(){
   $('#welcomeModal').modal('show');
 });
 </script>
-<?php \$this->endSection(); ?>
+<?php $this->endSection(); ?>
