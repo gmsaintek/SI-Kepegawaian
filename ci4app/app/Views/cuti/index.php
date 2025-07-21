@@ -5,7 +5,7 @@
         <a href="<?= site_url('cuti/create') ?>" class="btn btn-primary mb-2">Ajukan Cuti</a>
         <table class="table table-bordered">
             <thead>
-            <tr><th>ID</th><th>Nama</th><th>Tanggal Awal</th><th>Tanggal Akhir</th><th>Jenis</th><th>Status</th></tr>
+            <tr><th>ID</th><th>Nama</th><th>Tanggal Awal</th><th>Tanggal Akhir</th><th>Jenis</th><th>Status</th><th>Aksi</th></tr>
             </thead>
             <tbody>
             <?php foreach($cuti as $row): ?>
@@ -16,6 +16,7 @@
                     <td><?= esc($row['tanggal_akhir']) ?></td>
                     <td><?= esc($row['jenis']) ?></td>
                     <td><?= esc($row['status']) ?></td>
+                    <td><a href="<?= site_url('cuti/edit/' . $row['id']) ?>" class="btn btn-sm btn-secondary">Edit</a></td>
                 </tr>
             <?php endforeach; ?>
             </tbody>

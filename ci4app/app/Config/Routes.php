@@ -15,3 +15,5 @@ $routes->post('/attendance/save', 'Attendance::save');
 $routes->get('/cuti', 'Cuti::index');
 $routes->get('/cuti/create', 'Cuti::create');
 $routes->post('/cuti/save', 'Cuti::save');
+$routes->get('/cuti/edit/(:num)', 'Cuti::edit/$1');
+$routes->post('/cuti/update/(:num)', 'Cuti::update/$1');
