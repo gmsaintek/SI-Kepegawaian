@@ -10,6 +10,11 @@
 <body class="bg-light d-flex align-items-center" style="height:100vh;">
     <div class="container text-center animate__animated animate__fadeIn">
         <h1 class="mb-4">Welcome to SI Kepegawaian</h1>
+        <?php if (session()->getFlashdata('error')): ?>
+            <div class="alert alert-danger" role="alert">
+                <?= esc(session()->getFlashdata('error')) ?>
+            </div>
+        <?php endif; ?>
         <a href="<?= esc($authUrl) ?>" class="btn btn-danger btn-lg">
             <i class="fab fa-google mr-2"></i>Sign in with Google
         </a>
