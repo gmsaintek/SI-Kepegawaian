@@ -3,6 +3,9 @@
 <div class="text-center">
     <h2 class="mb-4 animate__animated animate__fadeInDown">Hello, <?= esc($user['name']) ?>!</h2>
     <p class="lead">You are logged in as <strong><?= esc($user['role']) ?></strong>.</p>
+    <?php if ($user['role'] === 'hr'): ?>
+    <p class="lead">Sebagai HR Anda dapat mengelola pegawai dan presensi.</p>
+    <?php endif; ?>
     <a href="<?= site_url('auth/logout') ?>" class="btn btn-secondary">Logout</a>
 </div>
 

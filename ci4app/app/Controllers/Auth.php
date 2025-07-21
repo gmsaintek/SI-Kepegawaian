@@ -42,12 +42,20 @@ class Auth extends BaseController
             'email' => $googleUser->getEmail(),
             'name' => $googleUser->getName(),
         ];
+        // determine HR emails from environment variable
+        $hrEmails = array_map('trim', explode(',', getenv('HR_EMAILS') ?: ''));
+        $isHr = in_array($data['email'], $hrEmails, true);
+
         $user = $this->users->where('google_id', $data['google_id'])->first();
         if (!$user) {
-            $data['role'] = 'employee';
+            $data['role'] = $isHr ? 'hr' : 'employee';
             $data['created_at'] = date('Y-m-d H:i:s');
             $this->users->insert($data);
             $user = $this->users->where('google_id', $data['google_id'])->first();
+        } elseif ($isHr && $user['role'] !== 'hr') {
+            // upgrade existing user to HR if listed
+            $this->users->update($user['id'], ['role' => 'hr']);
+            $user['role'] = 'hr';
         }
         session()->set('user', [
             'id' => $user['id'],

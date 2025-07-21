@@ -14,6 +14,7 @@ Aplikasi sederhana sistem informasi kepegawaian berbasis [CodeIgniter 4](https:/
    cp env .env
    ```
 3. Atur nilai `GOOGLE_CLIENT_ID` dan `GOOGLE_CLIENT_SECRET` di file `.env`.
+   Anda juga dapat menentukan email yang mendapat peran `hr` melalui variabel `HR_EMAILS` (pisahkan dengan koma).
 4. Jalankan migrasi untuk membuat tabel `users` menggunakan berkas `app/Database/Migrations/2025-07-21-000002_CreateUsersTable.php`:
    ```bash
    php spark migrate
