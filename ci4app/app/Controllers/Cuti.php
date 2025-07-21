@@ -40,4 +40,22 @@ class Cuti extends BaseController
         ]);
         return redirect()->to('/cuti');
     }
+
+    public function edit($id)
+    {
+        $data['cuti'] = $this->cutiModel->find($id);
+        return view('cuti/edit', $data);
+    }
+
+    public function update($id)
+    {
+        $this->cutiModel->update(
+            $id,
+            [
+                'status' => $this->request->getPost('status'),
+                'alasan_penolakan' => $this->request->getPost('alasan_penolakan'),
+            ]
+        );
+        return redirect()->to('/cuti');
+    }
 }
