@@ -1,13 +1,9 @@
-<?php
-require_once '../../backend/db.php';
-$db = get_db();
-$pegawai = $db->query('SELECT id,nama FROM pegawai ORDER BY nama')->fetchAll(PDO::FETCH_ASSOC);
-?>
+<?php include '../../backend/db.php'; ?>
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8" />
-  <title>Input Presensi</title>
+  <title>Tambah Pegawai</title>
   <link href="https://cdn.jsdelivr.net/npm/@fontsource/source-sans-3@5.0.12/index.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"/>
   <link rel="stylesheet" href="../../dist/css/adminlte.css" />
@@ -19,33 +15,31 @@ $pegawai = $db->query('SELECT id,nama FROM pegawai ORDER BY nama')->fetchAll(PDO
   <main class="app-main">
     <div class="app-content-header">
       <div class="container-fluid">
-        <h3 class="mb-0">Input Presensi</h3>
+        <h3 class="mb-0">Tambah Pegawai</h3>
       </div>
     </div>
     <div class="app-content">
       <div class="container-fluid">
-        <form method="POST" action="../../backend/save_presensi.php">
+        <form method="POST" action="../../backend/save_pegawai.php">
           <div class="mb-3">
-            <label class="form-label">Pegawai</label>
-            <select name="pegawai_id" class="form-select" required>
-              <option value="">-- pilih pegawai --</option>
-              <?php foreach($pegawai as $p): ?>
-                <option value="<?php echo $p['id']; ?>"><?php echo htmlspecialchars($p['nama']); ?></option>
-              <?php endforeach; ?>
-            </select>
+            <label class="form-label">Nama</label>
+            <input type="text" name="nama" class="form-control" required />
           </div>
           <div class="mb-3">
-            <label class="form-label">Tanggal</label>
-            <input type="date" name="tanggal" class="form-control" required />
+            <label class="form-label">NIK</label>
+            <input type="text" name="nik" class="form-control" required />
           </div>
           <div class="mb-3">
-            <label class="form-label">Status</label>
-            <select name="status" class="form-select" required>
-              <option value="Hadir">Hadir</option>
-              <option value="Sakit">Sakit</option>
-              <option value="Izin">Izin</option>
-              <option value="Tidak Hadir">Tidak Hadir</option>
-            </select>
+            <label class="form-label">Tanggal Lahir</label>
+            <input type="date" name="tanggal_lahir" class="form-control" required />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Jabatan</label>
+            <input type="text" name="jabatan" class="form-control" required />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Kontak</label>
+            <input type="text" name="kontak" class="form-control" />
           </div>
           <button type="submit" class="btn btn-primary">Simpan</button>
         </form>
