@@ -68,7 +68,7 @@
 
 # logger.threshold = 4
 
-GOOGLE_CLIENT_ID="your-google-client-id"
-GOOGLE_CLIENT_SECRET="your-google-client-secret"
+GOOGLE_CLIENT_ID="764304330117-06j4mdeatu5iiab3kubg5n4hm74qn3c3.apps.googleusercontent.com"
+GOOGLE_CLIENT_SECRET="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"
 # Comma-separated list of emails that should receive the HR role
-HR_EMAILS="hr@example.com"
+HR_EMAILS="it.gm.saintek@gmail.com"
