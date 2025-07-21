@@ -4,10 +4,10 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>Pengelolaan Kenaikan Jabatan</title>
+        <title>Pengelolaan Kenaikan Jabatan | Sisforpeg</title>
     
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="title" content="Pengelolaan Kenaikan Jabatan" />
+        <meta name="title" content="Pengelolaan Kenaikan Jabatan | Sisforpeg" />
         <meta name="author" content="Gantari Mengwi 2025" />
         <meta name="description" content="Sisforpeg Desa"/>
 

@@ -11,7 +11,7 @@
                 <div class="mb-3">
                     <label for="posisi_pendidikan" class="form-label">Pendidikan Terakhir</label>
                     <select class="form-select" id="posisi_pendidikan" required>
-                        <option value="" selected disabled>Pilih Pendidikan</option>
+                        <option selected disabled>Pilih Pendidikan</option>
                         <option value="S1">S1</option>
                         <option value="S2">S2</option>
                         <option value="S3">S3</option>

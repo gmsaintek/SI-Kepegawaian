@@ -23,7 +23,7 @@
                     <label class="form-label">Periode Pengajuan Izin</label>
                     <div class="input-group">
                         <span class="input-group-text">Dari</span>
-                        <input type="date" class="form-control" id="start_pengajuan_izin" required>
+                        <input type="date" class="form-control" id="start_pengajuan_izin">
                         <span class="input-group-text">Sampai</span>
                         <input type="date" class="form-control" id="end_pengajuan_izin" required>
                     </div>
@@ -37,7 +37,7 @@
                     <label class="form-label">Periode Izin Diberikan</label>
                     <div class="input-group">
                         <span class="input-group-text">Dari</span>
-                        <input type="date" class="form-control" id="start_periode_izin" required>
+                        <input type="date" class="form-control" id="start_periode_izin">
                         <span class="input-group-text">Sampai</span>
                         <input type="date" class="form-control" id="end_periode_izin" required>
                     </div>
@@ -98,7 +98,6 @@
             <div class="modal-footer">
                 <button class="btn btn-warning">Cetak</button>
                 <button class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                
             </div>
 
         </div>

@@ -3,7 +3,7 @@
         <div class="modal-content">
     
             <div class="modal-header">
-                <h5 class="modal-title" id="izin_create_adminLabel">Cetak Laporan Izin Pegawai</h5>
+                <h5 class="modal-title" id="izin_create_adminLabel">Permohonan Izin Cuti</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
@@ -22,7 +22,7 @@
 
                 <div class="mb-3">
                     <label for="type_izincreate_admin" class="form-label">Jenis Cuti</label>
-                    <select class="form-select" id="type_izincreate_admin">
+                    <select class="form-select" id="type_izincreate_admin" required>
                         <option value="">Pilih...</option>
                         <option value="Sakit">Sakit</option>
                         <option value="Hamil">Izin</option>

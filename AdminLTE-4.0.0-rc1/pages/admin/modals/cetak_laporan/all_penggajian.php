@@ -21,7 +21,7 @@
                     <label for="period_cetak_penggajian" class="form-label">Periode</label>
                     <div class="input-group mb-3">
                         <span class="input-group-text">Dari</span>
-                        <input type="month" class="form-control" id="startMonth_cetak_penggajian" required>
+                        <input type="month" class="form-control" id="startMonth_cetak_penggajian">
                         <span class="input-group-text">Sampai</span>
                         <input type="month" class="form-control" id="endMonth_cetak_penggajian" required>
                     </div>
@@ -65,8 +65,8 @@
                 </div>
             </div>
             <div class="modal-footer">
+                <button class="btn btn-warning">Cetak</button>
                 <button class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                <button class="btn btn-primary">Simpan</button>
             </div>
         </div>
     </div>

@@ -2,11 +2,11 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>Pegawai Baru</title>
+        <title>Pegawai Baru | Sisforpeg</title>
     
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="title" content="Pegawai Baru" />
-        <meta name="author" content="ColorlibHQ" />
+        <meta name="title" content="Pegawai Baru | Sisforpeg" />
+        <meta name="author" content="Gantari Mengwi 2025" />
         <meta name="description" content="Sisforpeg Desa"/>
 
         <link href="https://cdn.jsdelivr.net/npm/@fontsource/source-sans-3@5.0.12/index.css" rel="stylesheet">

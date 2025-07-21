@@ -1,6 +1,6 @@
 <aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark">
     <div class="sidebar-brand">
-        <a href="user_index.php" class="brand-link">
+        <a href="index.php" class="brand-link">
             <span class="brand-text fw-light">Sisforpeg</span>
         </a>
     </div>

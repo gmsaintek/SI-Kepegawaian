@@ -12,6 +12,10 @@
                  OR pdf yang udah dibuat sama Kaur Keuangan terus di share in an embed -->
                 <iframe class="align-middle" src="#" width="440" height="640" allow="autoplay"></iframe>
             </div>
+            
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>    
+            </div>
         </div>
     </div>
 </div>
