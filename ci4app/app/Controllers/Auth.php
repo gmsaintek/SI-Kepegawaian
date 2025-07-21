@@ -48,14 +48,24 @@ class Auth extends BaseController
 
         $user = $this->users->where('google_id', $data['google_id'])->first();
         if (!$user) {
+            $user = $this->users->where('email', $data['email'])->first();
+        }
+
+        if (!$user) {
             $data['role'] = $isHr ? 'hr' : 'employee';
             $data['created_at'] = date('Y-m-d H:i:s');
             $this->users->insert($data);
             $user = $this->users->where('google_id', $data['google_id'])->first();
-        } elseif ($isHr && $user['role'] !== 'hr') {
-            // upgrade existing user to HR if listed
-            $this->users->update($user['id'], ['role' => 'hr']);
-            $user['role'] = 'hr';
+        } else {
+            if (empty($user['google_id'])) {
+                $this->users->update($user['id'], ['google_id' => $data['google_id']]);
+                $user['google_id'] = $data['google_id'];
+            }
+            if ($isHr && $user['role'] !== 'hr') {
+                // upgrade existing user to HR if listed
+                $this->users->update($user['id'], ['role' => 'hr']);
+                $user['role'] = 'hr';
+            }
         }
         session()->set('user', [
             'id' => $user['id'],

@@ -19,6 +19,8 @@ class CreateUsersTable extends Migration
             'created_at' => ['type' => 'TEXT'],
         ]);
         $this->forge->addKey('id', true);
+        $this->forge->addUniqueKey('google_id');
+        $this->forge->addUniqueKey('email');
         $this->forge->createTable('users');
     }
 
