@@ -1,20 +1,23 @@
 # SI-Kepegawaian
 
-Contoh sederhana sistem informasi kepegawaian menggunakan PHP dan SQLite. 
+Aplikasi sederhana sistem informasi kepegawaian berbasis [CodeIgniter 4](https://codeigniter.com/) dengan antarmuka menggunakan AdminLTE 3.
 
-## Cara Menjalankan
+## Menjalankan Aplikasi
 
-1. Inisialisasi database:
+1. Masuk ke direktori `ci4app` dan instal dependensi menggunakan Composer:
    ```bash
-   php backend/init_db.php
+   cd ci4app
+   composer install
    ```
-   Perintah ini akan membuat file `backend/database.sqlite`.
-
-2. Jalankan server PHP lokal dari direktori **AdminLTE-4.0.0-rc1** agar
-   berkas CSS dapat dilayani dengan benar:
+2. Salin berkas `env` menjadi `.env` lalu jalankan migrasi untuk membuat tabel SQLite:
    ```bash
-   php -S localhost:8000 -t AdminLTE-4.0.0-rc1
+   cp env .env
+   php spark migrate
    ```
-   Kemudian akses `http://localhost:8000/pages/admin/index.php` melalui peramban.
+3. Jalankan server pengembangan bawaan CodeIgniter:
+   ```bash
+   php spark serve
+   ```
+4. Akses aplikasi melalui `http://localhost:8080`.
 
-Aplikasi ini menyediakan formulir penambahan pegawai, input presensi, dan tampilan daftar data.
+Database SQLite berada di `ci4app/writable/database.sqlite`.
