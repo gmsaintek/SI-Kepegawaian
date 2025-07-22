@@ -21,20 +21,40 @@ class Cuti extends BaseController
     public function index()
     {
         $data['cuti'] = $this->cutiModel->getJoin()->findAll();
-        $data['pegawai'] = $this->employeeModel->findAll();
+        $user = session('user');
+        if ($user['role'] === 'hr') {
+            $data['pegawai'] = $this->employeeModel->findAll();
+        } else {
+            $emp = $this->employeeModel->where('nama', $user['name'])->first();
+            $data['selected'] = $emp['id'] ?? null;
+        }
         return view('cuti/index', $data);
     }
 
     public function create()
     {
-        $data['pegawai'] = $this->employeeModel->findAll();
+        $user = session('user');
+        if ($user['role'] === 'hr') {
+            $data['pegawai'] = $this->employeeModel->findAll();
+        } else {
+            $emp = $this->employeeModel->where('nama', $user['name'])->first();
+            $data['selected'] = $emp['id'] ?? null;
+        }
         return view('cuti/create', $data);
     }
 
     public function save()
     {
+        $user = session('user');
+        if ($user['role'] === 'hr') {
+            $pegawaiId = $this->request->getPost('pegawai_id');
+        } else {
+            $emp = $this->employeeModel->where('nama', $user['name'])->first();
+            $pegawaiId = $emp['id'] ?? null;
+        }
+
         $data = [
-            'pegawai_id' => $this->request->getPost('pegawai_id'),
+            'pegawai_id' => $pegawaiId,
             'tanggal_awal' => $this->request->getPost('tanggal_awal'),
             'tanggal_akhir' => $this->request->getPost('tanggal_akhir'),
             'jenis' => $this->request->getPost('jenis'),
@@ -73,6 +93,7 @@ class Cuti extends BaseController
     {
         $user = session('user');
         $cuti = $this->cutiModel->find($id);
+        $oldStatus = $cuti['status'] ?? null;
         if (!$cuti) {
             return redirect()->to('/cuti');
         }
@@ -92,8 +113,10 @@ class Cuti extends BaseController
                 session()->setFlashdata('error', 'Tidak dapat mengubah permohonan setelah diproses.');
                 return redirect()->to('/cuti');
             }
+            $emp = $this->employeeModel->where('nama', $user['name'])->first();
+            $pegawaiId = $emp['id'] ?? null;
             $data = [
-                'pegawai_id' => $this->request->getPost('pegawai_id'),
+                'pegawai_id' => $pegawaiId,
                 'tanggal_awal' => $this->request->getPost('tanggal_awal'),
                 'tanggal_akhir' => $this->request->getPost('tanggal_akhir'),
                 'jenis' => $this->request->getPost('jenis'),
@@ -113,6 +136,18 @@ class Cuti extends BaseController
                 $pegawai = $this->employeeModel->find($cuti['pegawai_id']);
                 $this->employeeModel->update($pegawai['id'], [
                     'sisa_cuti' => max(0, $pegawai['sisa_cuti'] - $days),
+                ]);
+            }
+            if ($status !== $oldStatus) {
+                $reason = $this->request->getPost('alasan_penolakan');
+                $msg = 'Status diubah menjadi '.$status;
+                if ($reason) {
+                    $msg .= ' dengan alasan: '.$reason;
+                }
+                $this->logModel->insert([
+                    'cuti_id' => $id,
+                    'message' => $msg,
+                    'created_at' => date('Y-m-d H:i:s'),
                 ]);
             }
         }
@@ -164,5 +199,23 @@ class Cuti extends BaseController
             'logs' => $logs,
             'cuti' => $cuti,
         ]);
+    }
+
+    public function sanggah($id)
+    {
+        $user = session('user');
+        if ($user['role'] === 'hr') {
+            return redirect()->to('/cuti/timeline/'.$id);
+        }
+        $message = $this->request->getPost('sanggah');
+        if ($message) {
+            $this->logModel->insert([
+                'cuti_id' => $id,
+                'message' => 'Sanggahan oleh '.$user['name'].': '.$message,
+                'created_at' => date('Y-m-d H:i:s'),
+            ]);
+            session()->setFlashdata('success', 'Sanggahan dikirim.');
+        }
+        return redirect()->to('/cuti/timeline/'.$id);
     }
 }

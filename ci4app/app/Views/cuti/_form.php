@@ -1,14 +1,22 @@
-<?php $isHr = session('user')['role'] === 'hr'; ?>
+<?php
+    $user = session('user');
+    $isHr = $user['role'] === 'hr';
+?>
 <form method="post" action="<?= $action ?>">
     <?= csrf_field() ?>
     <div class="form-group">
         <label>Pegawai</label>
-        <select name="pegawai_id" class="form-control" required>
-            <option value="">-- pilih pegawai --</option>
-            <?php foreach($pegawai as $p): ?>
-                <option value="<?= $p['id'] ?>" <?= ($cuti['pegawai_id'] ?? $selected ?? '') == $p['id'] ? 'selected' : '' ?>><?= esc($p['nama']) ?></option>
-            <?php endforeach; ?>
-        </select>
+        <?php if ($isHr): ?>
+            <select name="pegawai_id" class="form-control" required>
+                <option value="">-- pilih pegawai --</option>
+                <?php foreach($pegawai as $p): ?>
+                    <option value="<?= $p['id'] ?>" <?= ($cuti['pegawai_id'] ?? $selected ?? '') == $p['id'] ? 'selected' : '' ?>><?= esc($p['nama']) ?></option>
+                <?php endforeach; ?>
+            </select>
+        <?php else: ?>
+            <input type="hidden" name="pegawai_id" value="<?= esc($selected) ?>">
+            <input type="text" class="form-control" value="<?= esc($user['name']) ?>" readonly>
+        <?php endif; ?>
     </div>
     <div class="form-group">
         <label>Tanggal Awal</label>
