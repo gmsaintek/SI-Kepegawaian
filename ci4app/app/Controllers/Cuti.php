@@ -46,9 +46,9 @@ class Cuti extends BaseController
     public function save()
     {
         $user = session('user');
-        if ($user['role'] === 'hr') {
-            $pegawaiId = $this->request->getPost('pegawai_id');
-        } else {
+        // allow passing pegawai_id via form for all roles
+        $pegawaiId = $this->request->getPost('pegawai_id');
+        if (empty($pegawaiId) && $user['role'] !== 'hr') {
             $emp = $this->employeeModel->where('nama', $user['name'])->first();
             $pegawaiId = $emp['id'] ?? null;
         }
@@ -118,8 +118,11 @@ class Cuti extends BaseController
                 session()->setFlashdata('error', 'Tidak dapat mengubah permohonan setelah diproses.');
                 return redirect()->to('/cuti');
             }
-            $emp = $this->employeeModel->where('nama', $user['name'])->first();
-            $pegawaiId = $emp['id'] ?? null;
+            $pegawaiId = $this->request->getPost('pegawai_id');
+            if (empty($pegawaiId)) {
+                $emp = $this->employeeModel->where('nama', $user['name'])->first();
+                $pegawaiId = $emp['id'] ?? null;
+            }
             $data = [
                 'pegawai_id' => $pegawaiId,
                 'tanggal_awal' => $this->request->getPost('tanggal_awal'),
