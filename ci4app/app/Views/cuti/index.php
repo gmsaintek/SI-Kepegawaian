@@ -10,7 +10,6 @@ $this->extend('layout');
                 <?= esc(session()->getFlashdata('success')) ?>
             </div>
         <?php endif; ?>
-        <a href="<?= site_url('cuti/timeline') ?>" class="btn btn-info mb-2">Timeline</a>
         <button class="btn btn-primary mb-2" data-toggle="modal" data-target="#createModal">Ajukan Cuti</button>
         <table class="table table-bordered">
             <thead>
@@ -28,6 +27,7 @@ $this->extend('layout');
                     <td>
                         <button class="btn btn-sm btn-secondary" data-toggle="modal" data-target="#editModal<?= $row['id'] ?>">Edit</button>
                         <a href="<?= site_url('cuti/delete/'.$row['id']) ?>" class="btn btn-sm btn-danger" onclick="return confirm('Hapus permohonan?')">Delete</a>
+                        <a href="<?= site_url('cuti/timeline/'.$row['id']) ?>" class="btn btn-sm btn-info">Timeline</a>
                     </td>
                 </tr>
             <?php endforeach; ?>

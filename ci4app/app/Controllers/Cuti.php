@@ -147,13 +147,22 @@ class Cuti extends BaseController
         return redirect()->to('/cuti');
     }
 
-    public function timeline()
+    public function timeline($id)
     {
-        $logs = $this->logModel->select('cuti_logs.*, pegawai.nama')
-            ->join('cuti', 'cuti.id=cuti_logs.cuti_id')
+        $cuti = $this->cutiModel->select('cuti.*, pegawai.nama')
             ->join('pegawai', 'pegawai.id=cuti.pegawai_id')
-            ->orderBy('cuti_logs.created_at', 'desc')
+            ->find($id);
+        if (!$cuti) {
+            return redirect()->to('/cuti');
+        }
+
+        $logs = $this->logModel->where('cuti_id', $id)
+            ->orderBy('created_at', 'asc')
             ->findAll();
-        return view('cuti/timeline', ['logs' => $logs]);
+
+        return view('cuti/timeline', [
+            'logs' => $logs,
+            'cuti' => $cuti,
+        ]);
     }
 }
