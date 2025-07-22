@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 <?php if (!isset($hr) || !$hr): ?>
     <div class="form-group">
@@ -18,6 +19,8 @@
         <textarea name="alasan_penolakan" class="form-control"><?= esc($cuti['alasan_penolakan'] ?? '') ?></textarea>
     </div>
 <?php endif; ?>
+=======
+>>>>>>> ca924d80dc184971947d39ff6b5e507e9b9ac396
 <form method="post" action="<?= $action ?>">
     <?= csrf_field() ?>
     <?php if (!isset($cuti)): ?>
@@ -50,14 +53,24 @@
         <div class="form-group">
             <label>Status</label>
             <select name="status" class="form-control">
+<<<<<<< HEAD
                 <option value="Menunggu" <?= $cuti['status'] == 'Menunggu' ? 'selected' : '' ?>>Menunggu</option>
                 <option value="Disetujui" <?= $cuti['status'] == 'Disetujui' ? 'selected' : '' ?>>Disetujui</option>
                 <option value="Ditolak" <?= $cuti['status'] == 'Ditolak' ? 'selected' : '' ?>>Ditolak</option>
+=======
+                <option value="Menunggu" <?= isset($cuti['status']) && $cuti['status'] == 'Menunggu' ? 'selected' : '' ?>>Menunggu</option>
+                <option value="Disetujui" <?= isset($cuti['status']) && $cuti['status'] == 'Disetujui' ? 'selected' : '' ?>>Disetujui</option>
+                <option value="Ditolak" <?= isset($cuti['status']) && $cuti['status'] == 'Ditolak' ? 'selected' : '' ?>>Ditolak</option>
+>>>>>>> ca924d80dc184971947d39ff6b5e507e9b9ac396
             </select>
         </div>
         <div class="form-group">
             <label>Alasan Penolakan</label>
+<<<<<<< HEAD
             <textarea name="alasan_penolakan" class="form-control"><?= esc($cuti['alasan_penolakan']) ?></textarea>
+=======
+            <textarea name="alasan_penolakan" class="form-control"><?= esc($cuti['alasan_penolakan'] ?? '') ?></textarea>
+>>>>>>> ca924d80dc184971947d39ff6b5e507e9b9ac396
         </div>
     <?php endif; ?>
     <button type="submit" class="btn btn-primary"><?= $submit ?? 'Simpan' ?></button>
