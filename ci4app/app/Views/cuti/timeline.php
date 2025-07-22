@@ -5,6 +5,15 @@ $this->extend('layout');
 <?php $this->section('content'); ?>
 <section class="content">
     <div class="container-fluid">
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title"><?= esc($cuti['nama']) ?></h5>
+                <p class="card-text">
+                    <?= esc($cuti['tanggal_awal']) ?> - <?= esc($cuti['tanggal_akhir']) ?> (<?= esc($cuti['jenis']) ?>)
+                </p>
+                <p>Status: <?= esc($cuti['status']) ?></p>
+            </div>
+        </div>
         <div class="timeline">
             <?php $current = null; foreach ($logs as $log): ?>
                 <?php $date = date('d M Y', strtotime($log['created_at'])); ?>
@@ -15,7 +24,7 @@ $this->extend('layout');
                     <i class="fas fa-plane bg-primary timeline-icon"></i>
                     <div class="timeline-item">
                         <span class="time"><i class="fas fa-clock"></i> <?= date('H:i', strtotime($log['created_at'])) ?></span>
-                        <h3 class="timeline-header"><?= esc($log['nama']) ?></h3>
+                        <h3 class="timeline-header"><?= esc($cuti['nama']) ?></h3>
                         <div class="timeline-body">
                             <?= esc($log['message']) ?>
                         </div>
