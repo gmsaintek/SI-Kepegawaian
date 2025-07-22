@@ -17,8 +17,10 @@ $routes->post('/attendance/update/(:num)', 'Attendance::update/$1', ['filter' =>
 $routes->get('/cuti', 'Cuti::index', ['filter' => 'auth']);
 $routes->get('/cuti/create', 'Cuti::create', ['filter' => 'auth']);
 $routes->post('/cuti/save', 'Cuti::save', ['filter' => 'auth']);
-$routes->get('/cuti/edit/(:num)', 'Cuti::edit/$1', ['filter' => 'hr']);
-$routes->post('/cuti/update/(:num)', 'Cuti::update/$1', ['filter' => 'hr']);
+$routes->get('/cuti/edit/(:num)', 'Cuti::edit/$1', ['filter' => 'auth']);
+$routes->post('/cuti/update/(:num)', 'Cuti::update/$1', ['filter' => 'auth']);
+$routes->get('/cuti/delete/(:num)', 'Cuti::delete/$1', ['filter' => 'auth']);
+$routes->get('/cuti/timeline', 'Cuti::timeline', ['filter' => 'auth']);
 $routes->get('/auth/callback', 'Auth::callback');
 $routes->get('/auth/logout', 'Auth::logout');
 $routes->get('/dashboard', 'Dashboard::index', ['filter' => 'auth']);
