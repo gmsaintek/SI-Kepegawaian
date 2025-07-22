@@ -1,9 +1,5 @@
 <?php
 $title = 'Edit Presensi';
-$breadcrumbs = [
-    ['title' => 'Presensi', 'url' => site_url('attendance')],
-    ['title' => 'Edit']
-];
 $this->extend('layout');
 ?>
 <?php $this->section('content'); ?>
