@@ -1,9 +1,5 @@
 <?php
 $title = 'Ajukan Cuti';
-$breadcrumbs = [
-    ['title' => 'Cuti', 'url' => site_url('cuti')],
-    ['title' => 'Ajukan']
-];
 $this->extend('layout');
 ?>
 <?php $this->section('content'); ?>

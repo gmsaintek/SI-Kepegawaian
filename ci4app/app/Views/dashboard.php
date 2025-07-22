@@ -1,6 +1,5 @@
 <?php
 $title = 'Dashboard';
-$breadcrumbs = [ ['title' => 'Dashboard'] ];
 $this->extend('layout');
 ?>
 <?php $this->section('content'); ?>
