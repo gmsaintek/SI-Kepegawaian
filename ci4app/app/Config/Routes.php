@@ -24,3 +24,5 @@ $routes->get('/cuti/timeline/(:num)', 'Cuti::timeline/$1', ['filter' => 'auth'])
 $routes->get('/auth/callback', 'Auth::callback');
 $routes->get('/auth/logout', 'Auth::logout');
 $routes->get('/dashboard', 'Dashboard::index', ['filter' => 'auth']);
+$routes->get('/profile', 'Profile::index', ['filter' => 'auth']);
+$routes->post('/profile/update', 'Profile::update', ['filter' => 'auth']);

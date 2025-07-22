@@ -27,14 +27,17 @@
         <ul class="navbar-nav ml-auto">
             <?php $user = session('user'); ?>
             <?php if ($user): ?>
-            <li class="nav-item d-flex align-items-center mr-2">
-                <span class="text-sm font-weight-bold">
-                    <?= esc($user['name']) ?> (<?= esc($user['role']) ?>)
+            <li class="nav-item d-flex align-items-center mr-3">
+                <span class="text-sm font-weight-bold mr-2">
+                    <?= esc($user['name']) ?>
+                </span>
+                <?php $label = $user['role']==='hr' ? 'Human Resource' : 'Karyawan'; ?>
+                <span class="badge <?= $user['role']==='hr' ? 'badge-danger' : 'badge-primary' ?>">
+                    <?= $label ?>
                 </span>
             </li>
-            <li class="nav-item">
-                <a href="<?= site_url('auth/logout') ?>" class="nav-link">Logout</a>
-            </li>
+            <li class="nav-item"><a href="<?= site_url('profile') ?>" class="nav-link">Pengaturan</a></li>
+            <li class="nav-item"><a href="<?= site_url('auth/logout') ?>" class="nav-link">Logout</a></li>
             <?php endif; ?>
         </ul>
     </nav>
@@ -53,6 +56,7 @@
                     <li class="nav-item"><a href="<?= site_url('attendance') ?>" class="nav-link <?= url_is('attendance*') ? 'active' : '' ?>"><i class="nav-icon fas fa-calendar-check"></i><p>Presensi</p></a></li>
                     <?php endif; ?>
                     <li class="nav-item"><a href="<?= site_url('cuti') ?>" class="nav-link <?= url_is('cuti*') ? 'active' : '' ?>"><i class="nav-icon fas fa-plane"></i><p>Cuti</p></a></li>
+                    <li class="nav-item"><a href="<?= site_url('profile') ?>" class="nav-link <?= url_is('profile*') ? 'active' : '' ?>"><i class="nav-icon fas fa-user-cog"></i><p>Pengaturan</p></a></li>
                 </ul>
             </nav>
         </div>
@@ -62,8 +66,13 @@
         <div class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
-                    <div class="col-sm-6">
-                        <h1 class="m-0"><?= esc($pageTitle ?? $title ?? '') ?></h1>
+                    <div class="col-sm-6 d-flex align-items-center">
+                        <a href="<?= previous_url() ?: site_url('dashboard') ?>" class="btn btn-link text-secondary mr-2">
+                            <i class="fas fa-arrow-left"></i>
+                        </a>
+                        <h1 class="m-0 mb-0">
+                            <?= esc($pageTitle ?? $title ?? '') ?>
+                        </h1>
                     </div>
                     <div class="col-sm-6">
                         <?php if (!isset($breadcrumbs)): ?>
