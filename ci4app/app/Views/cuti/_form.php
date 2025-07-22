@@ -40,5 +40,7 @@
             <textarea name="alasan_penolakan" class="form-control"><?= esc($cuti['alasan_penolakan'] ?? '') ?></textarea>
         </div>
     <?php endif; ?>
-    <button type="submit" class="btn btn-primary"><?= $submit ?? 'Simpan' ?></button>
+    <button type="submit" class="btn btn-primary">
+        <i class="fas fa-save mr-1"></i><?= $submit ?? 'Simpan' ?>
+    </button>
 </form>

@@ -5,12 +5,19 @@ $this->extend('layout');
 <?php $this->section('content'); ?>
 <section class="content">
     <div class="container-fluid">
+        <div class="card shadow animate__animated animate__fadeInUp">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h3 class="card-title mb-0">Data Cuti</h3>
+                <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#createModal">
+                    <i class="fas fa-plus mr-1"></i>Ajukan Cuti
+                </button>
+            </div>
+            <div class="card-body">
         <?php if (session()->getFlashdata('success')): ?>
             <div class="alert alert-success">
                 <?= esc(session()->getFlashdata('success')) ?>
             </div>
         <?php endif; ?>
-        <button class="btn btn-primary mb-2" data-toggle="modal" data-target="#createModal">Ajukan Cuti</button>
         <table class="table table-bordered">
             <thead>
             <tr><th>ID</th><th>Nama</th><th>Tanggal Awal</th><th>Tanggal Akhir</th><th>Jenis</th><th>Status</th><th>Aksi</th></tr>
@@ -25,14 +32,16 @@ $this->extend('layout');
                     <td><?= esc($row['jenis']) ?></td>
                     <td><?= esc($row['status']) ?></td>
                     <td>
-                        <button class="btn btn-sm btn-secondary" data-toggle="modal" data-target="#editModal<?= $row['id'] ?>">Edit</button>
-                        <a href="<?= site_url('cuti/delete/'.$row['id']) ?>" class="btn btn-sm btn-danger" onclick="return confirm('Hapus permohonan?')">Delete</a>
-                        <a href="<?= site_url('cuti/timeline/'.$row['id']) ?>" class="btn btn-sm btn-info">Timeline</a>
+                        <button class="btn btn-sm btn-secondary" data-toggle="modal" data-target="#editModal<?= $row['id'] ?>"><i class="fas fa-edit mr-1"></i>Edit</button>
+                        <a href="<?= site_url('cuti/delete/'.$row['id']) ?>" class="btn btn-sm btn-danger" onclick="return confirm('Hapus permohonan?')"><i class="fas fa-trash mr-1"></i>Delete</a>
+                        <a href="<?= site_url('cuti/timeline/'.$row['id']) ?>" class="btn btn-sm btn-info"><i class="fas fa-clock mr-1"></i>Timeline</a>
                     </td>
                 </tr>
             <?php endforeach; ?>
             </tbody>
         </table>
+            </div>
+        </div>
     </div>
 
     <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">

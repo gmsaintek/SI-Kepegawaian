@@ -3,12 +3,19 @@ $title = 'Dashboard';
 $this->extend('layout');
 ?>
 <?php $this->section('content'); ?>
-<div class="text-center">
-    <h2 class="mb-4 animate__animated animate__fadeInDown">Hello, <?= esc($user['name']) ?>!</h2>
-    <p class="lead">You are logged in as <strong><?= esc($user['role']) ?></strong>.</p>
-    <?php if ($user['role'] === 'hr'): ?>
-    <p class="lead">Sebagai HR Anda dapat mengelola pegawai dan presensi.</p>
-    <?php endif; ?>
+<div class="container-fluid">
+    <div class="card shadow text-center animate__animated animate__fadeInUp">
+        <div class="card-header">
+            <h3 class="card-title">Dashboard</h3>
+        </div>
+        <div class="card-body">
+            <h2 class="mb-4">Hello, <?= esc($user['name']) ?>!</h2>
+            <p class="lead">You are logged in as <strong><?= esc($user['role']) ?></strong>.</p>
+            <?php if ($user['role'] === 'hr'): ?>
+            <p class="lead">Sebagai HR Anda dapat mengelola pegawai dan presensi.</p>
+            <?php endif; ?>
+        </div>
+    </div>
 </div>
 
 <!-- Modal -->
