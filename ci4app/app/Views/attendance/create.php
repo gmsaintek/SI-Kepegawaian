@@ -2,6 +2,11 @@
 <?php $this->section('content'); ?>
 <section class="content">
     <div class="container-fluid">
+        <?php if (session()->getFlashdata('error')): ?>
+            <div class="alert alert-danger">
+                <?= esc(session()->getFlashdata('error')) ?>
+            </div>
+        <?php endif; ?>
         <form method="post" action="<?= site_url('attendance/save') ?>">
             <?= csrf_field() ?>
             <div class="form-group">

@@ -2,7 +2,7 @@
 <?php $this->section('content'); ?>
 <section class="content">
     <div class="container-fluid">
-        <form method="post" action="<?= site_url('employees/save') ?>">
+        <form method="post" enctype="multipart/form-data" action="<?= site_url('employees/save') ?>">
             <?= csrf_field() ?>
             <div class="form-group">
                 <label>Nama</label>
@@ -23,6 +23,10 @@
             <div class="form-group">
                 <label>Kontak</label>
                 <input type="text" name="kontak" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>Dokumen (KTP/Kontrak)</label>
+                <input type="file" name="document" class="form-control-file">
             </div>
             <button type="submit" class="btn btn-primary">Simpan</button>
         </form>

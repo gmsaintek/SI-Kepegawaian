@@ -2,6 +2,15 @@
 <?php $this->section('content'); ?>
 <section class="content">
     <div class="container-fluid">
+        <?php if (session()->getFlashdata('success')): ?>
+            <div class="alert alert-success">
+                <?= esc(session()->getFlashdata('success')) ?>
+            </div>
+        <?php endif; ?>
+        <form class="form-inline mb-2" method="get">
+            <input type="text" name="q" class="form-control mr-2" placeholder="Cari" value="<?= esc($search) ?>">
+            <button class="btn btn-secondary" type="submit">Cari</button>
+        </form>
         <a href="<?= site_url('employees/create') ?>" class="btn btn-primary mb-2">Tambah Pegawai</a>
         <table class="table table-bordered">
             <thead>
