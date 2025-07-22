@@ -22,5 +22,7 @@
             <option value="Tidak Hadir" <?= isset($presensi['status']) && $presensi['status']=='Tidak Hadir' ? 'selected' : '' ?>>Tidak Hadir</option>
         </select>
     </div>
-    <button type="submit" class="btn btn-primary"><?= $submit ?? 'Simpan' ?></button>
+    <button type="submit" class="btn btn-primary">
+        <i class="fas fa-save mr-1"></i><?= $submit ?? 'Simpan' ?>
+    </button>
 </form>

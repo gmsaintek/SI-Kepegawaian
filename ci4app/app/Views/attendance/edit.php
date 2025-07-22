@@ -5,6 +5,11 @@ $this->extend('layout');
 <?php $this->section('content'); ?>
 <section class="content">
     <div class="container-fluid">
+        <div class="card shadow animate__animated animate__fadeInUp">
+            <div class="card-header">
+                <h3 class="card-title">Edit Presensi</h3>
+            </div>
+            <div class="card-body">
         <form method="post" action="<?= site_url('attendance/update/' . $presensi['id']) ?>">
             <?= csrf_field() ?>
             <div class="form-group">
@@ -28,8 +33,10 @@ $this->extend('layout');
                     <option <?= $presensi['status']=='Tidak Hadir'?'selected':'' ?>>Tidak Hadir</option>
                 </select>
             </div>
-            <button type="submit" class="btn btn-primary">Update</button>
+            <button type="submit" class="btn btn-primary"><i class="fas fa-save mr-1"></i>Update</button>
         </form>
+            </div>
+        </div>
     </div>
 </section>
 <?php $this->endSection(); ?>

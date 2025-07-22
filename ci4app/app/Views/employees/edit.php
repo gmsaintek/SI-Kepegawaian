@@ -5,6 +5,11 @@ $this->extend('layout');
 <?php $this->section('content'); ?>
 <section class="content">
     <div class="container-fluid">
+        <div class="card shadow animate__animated animate__fadeInUp">
+            <div class="card-header">
+                <h3 class="card-title">Edit Pegawai</h3>
+            </div>
+            <div class="card-body">
         <form method="post" enctype="multipart/form-data" action="<?= site_url('employees/update/' . $pegawai['id']) ?>">
             <?= csrf_field() ?>
             <div class="form-group">
@@ -34,8 +39,10 @@ $this->extend('layout');
                     <p class="mt-2">Dokumen saat ini: <a href="<?= base_url('writable/'.$pegawai['document']) ?>" target="_blank">Lihat</a></p>
                 <?php endif; ?>
             </div>
-            <button type="submit" class="btn btn-primary">Update</button>
+            <button type="submit" class="btn btn-primary"><i class="fas fa-save mr-1"></i>Update</button>
         </form>
+            </div>
+        </div>
     </div>
 </section>
 <?php $this->endSection(); ?>
