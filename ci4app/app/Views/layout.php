@@ -17,16 +17,30 @@
                 <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
             </li>
         </ul>
+        <ul class="navbar-nav ml-auto">
+            <?php $user = session('user'); ?>
+            <?php if ($user): ?>
+            <li class="nav-item d-flex align-items-center mr-2">
+                <span class="text-sm font-weight-bold">
+                    <?= esc($user['name']) ?> (<?= esc($user['role']) ?>)
+                </span>
+            </li>
+            <li class="nav-item">
+                <a href="<?= site_url('auth/logout') ?>" class="nav-link">Logout</a>
+            </li>
+            <?php endif; ?>
+        </ul>
     </nav>
     <!-- Sidebar -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
-        <a href="/" class="brand-link">
+        <a href="<?= site_url('dashboard') ?>" class="brand-link">
             <span class="brand-text font-weight-light">SI Kepegawaian</span>
         </a>
         <div class="sidebar">
             <nav class="mt-2">
                 <?php $user = session('user'); ?>
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu">
+                    <li class="nav-item"><a href="<?= site_url('dashboard') ?>" class="nav-link"><i class="nav-icon fas fa-home"></i><p>Dashboard</p></a></li>
                     <?php if ($user && $user['role'] === 'hr'): ?>
                     <li class="nav-item"><a href="<?= site_url('employees') ?>" class="nav-link"><i class="nav-icon fas fa-users"></i><p>Pegawai</p></a></li>
                     <li class="nav-item"><a href="<?= site_url('attendance') ?>" class="nav-link"><i class="nav-icon fas fa-calendar-check"></i><p>Presensi</p></a></li>

@@ -6,7 +6,6 @@
     <?php if ($user['role'] === 'hr'): ?>
     <p class="lead">Sebagai HR Anda dapat mengelola pegawai dan presensi.</p>
     <?php endif; ?>
-    <a href="<?= site_url('auth/logout') ?>" class="btn btn-secondary">Logout</a>
 </div>
 
 <!-- Modal -->
