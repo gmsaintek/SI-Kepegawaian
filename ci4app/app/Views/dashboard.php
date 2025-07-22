@@ -1,4 +1,8 @@
-<?php $this->extend('layout'); ?>
+<?php
+$title = 'Dashboard';
+$breadcrumbs = [ ['title' => 'Dashboard'] ];
+$this->extend('layout');
+?>
 <?php $this->section('content'); ?>
 <div class="text-center">
     <h2 class="mb-4 animate__animated animate__fadeInDown">Hello, <?= esc($user['name']) ?>!</h2>

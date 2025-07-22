@@ -52,6 +52,31 @@
     </aside>
     <!-- Content Wrapper -->
     <div class="content-wrapper p-3">
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0"><?= esc($pageTitle ?? $title ?? '') ?></h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="<?= site_url('dashboard') ?>">Home</a></li>
+                            <?php if (!empty($breadcrumbs)): ?>
+                                <?php foreach ($breadcrumbs as $bc): ?>
+                                    <?php if (isset($bc['url'])): ?>
+                                        <li class="breadcrumb-item"><a href="<?= esc($bc['url']) ?>"><?= esc($bc['title']) ?></a></li>
+                                    <?php else: ?>
+                                        <li class="breadcrumb-item active"><?= esc($bc['title']) ?></li>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
+                            <?php else: ?>
+                                <li class="breadcrumb-item active"><?= esc($pageTitle ?? $title ?? '') ?></li>
+                            <?php endif; ?>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
         <?= $this->renderSection('content') ?>
     </div>
     <footer class="main-footer text-center">

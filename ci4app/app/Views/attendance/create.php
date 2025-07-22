@@ -1,4 +1,11 @@
-<?php $this->extend('layout'); ?>
+<?php
+$title = 'Input Presensi';
+$breadcrumbs = [
+    ['title' => 'Presensi', 'url' => site_url('attendance')],
+    ['title' => 'Input']
+];
+$this->extend('layout');
+?>
 <?php $this->section('content'); ?>
 <section class="content">
     <div class="container-fluid">

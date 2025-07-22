@@ -1,4 +1,11 @@
-<?php $this->extend('layout'); ?>
+<?php
+$title = 'Edit Cuti';
+$breadcrumbs = [
+    ['title' => 'Cuti', 'url' => site_url('cuti')],
+    ['title' => 'Edit']
+];
+$this->extend('layout');
+?>
 <?php $this->section('content'); ?>
 <section class="content">
     <div class="container-fluid">

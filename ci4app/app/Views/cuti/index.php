@@ -1,4 +1,8 @@
-<?php $this->extend('layout'); ?>
+<?php
+$title = 'Data Cuti';
+$breadcrumbs = [ ['title' => 'Cuti'] ];
+$this->extend('layout');
+?>
 <?php $this->section('content'); ?>
 <section class="content">
     <div class="container-fluid">
