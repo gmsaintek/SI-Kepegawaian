@@ -54,7 +54,16 @@ $this->extend('layout');
                     </button>
                 </div>
                 <div class="modal-body">
-                    <?php echo view('cuti/_form', ['action' => site_url('cuti/save'), 'pegawai' => $pegawai]); ?>
+                    <?php
+                        $params = ['action' => site_url('cuti/save')];
+                        if (isset($pegawai)) {
+                            $params['pegawai'] = $pegawai;
+                        }
+                        if (isset($selected)) {
+                            $params['selected'] = $selected;
+                        }
+                        echo view('cuti/_form', $params);
+                    ?>
                 </div>
             </div>
         </div>
@@ -71,7 +80,16 @@ $this->extend('layout');
                     </button>
                 </div>
                 <div class="modal-body">
-                    <?php echo view('cuti/_form', ['action' => site_url('cuti/update/'.$c['id']), 'cuti' => $c, 'submit' => 'Update']); ?>
+                    <?php
+                        $params = ['action' => site_url('cuti/update/'.$c['id']), 'cuti' => $c, 'submit' => 'Update'];
+                        if (isset($pegawai)) {
+                            $params['pegawai'] = $pegawai;
+                        }
+                        if (isset($selected)) {
+                            $params['selected'] = $selected;
+                        }
+                        echo view('cuti/_form', $params);
+                    ?>
                 </div>
             </div>
         </div>

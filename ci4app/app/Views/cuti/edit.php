@@ -10,12 +10,20 @@ $this->extend('layout');
                 <h3 class="card-title">Edit Cuti</h3>
             </div>
             <div class="card-body">
-        <?php echo view('cuti/_form', [
-            'action' => site_url('cuti/update/'.$cuti['id']),
-            'cuti' => $cuti,
-            'pegawai' => $pegawai,
-            'submit' => 'Update'
-        ]); ?>
+        <?php
+            $params = [
+                'action' => site_url('cuti/update/'.$cuti['id']),
+                'cuti'   => $cuti,
+                'submit' => 'Update',
+            ];
+            if (isset($pegawai)) {
+                $params['pegawai'] = $pegawai;
+            }
+            if (isset($selected)) {
+                $params['selected'] = $selected;
+            }
+            echo view('cuti/_form', $params);
+        ?>
             </div>
         </div>
     </div>
