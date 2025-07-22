@@ -1,9 +1,5 @@
 <?php
 $title = 'Edit Pegawai';
-$breadcrumbs = [
-    ['title' => 'Pegawai', 'url' => site_url('employees')],
-    ['title' => 'Edit']
-];
 $this->extend('layout');
 ?>
 <?php $this->section('content'); ?>
