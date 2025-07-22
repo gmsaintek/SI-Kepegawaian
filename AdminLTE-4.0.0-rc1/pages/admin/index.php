@@ -65,7 +65,7 @@
                   <h3>(count)</h3>
                   <p>Data Pegawai</p>
                 </div>
-                <a href="allpegawai.html" class="small-box-footer link-light link-underline-opacity-0 link-underline-opacity-50-hover">
+                <a href="allpegawai.php" class="small-box-footer link-light link-underline-opacity-0 link-underline-opacity-50-hover">
                   Lebih Lanjut
                 </a>
               </div>
@@ -76,7 +76,7 @@
                   <h3>(count)</h3>
                   <p>Data Penggajian</p>
                 </div>
-                <a href="#" class="small-box-footer link-light link-underline-opacity-0 link-underline-opacity-50-hover">
+                <a href="allpresensi.php" class="small-box-footer link-light link-underline-opacity-0 link-underline-opacity-50-hover">
                   Lebih Lanjut
                 </a>
               </div>
@@ -87,7 +87,7 @@
                   <h3>(count)</h3>
                   <p>Data Presensi</p>
                 </div>
-                <a href="#" class="small-box-footer link-light link-underline-opacity-0 link-underline-opacity-50-hover">
+                <a href="allizin.php" class="small-box-footer link-light link-underline-opacity-0 link-underline-opacity-50-hover">
                   Lebih Lanjut
                 </a>
               </div>
