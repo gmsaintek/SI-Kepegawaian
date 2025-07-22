@@ -53,6 +53,11 @@ class Cuti extends BaseController
             $pegawaiId = $emp['id'] ?? null;
         }
 
+        if (empty($pegawaiId)) {
+            session()->setFlashdata('error', 'Data pegawai tidak ditemukan.');
+            return redirect()->back()->withInput();
+        }
+
         $data = [
             'pegawai_id' => $pegawaiId,
             'tanggal_awal' => $this->request->getPost('tanggal_awal'),
@@ -122,6 +127,10 @@ class Cuti extends BaseController
                 'jenis' => $this->request->getPost('jenis'),
                 'alasan' => $this->request->getPost('alasan'),
             ];
+            if (empty($pegawaiId)) {
+                session()->setFlashdata('error', 'Data pegawai tidak ditemukan.');
+                return redirect()->back()->withInput();
+            }
         }
 
         $this->cutiModel->update($id, $data);
