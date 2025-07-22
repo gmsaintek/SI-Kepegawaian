@@ -28,7 +28,21 @@
     </div>
     <div class="form-group">
         <label>Jenis</label>
-        <input type="text" name="jenis" class="form-control" value="<?= esc($cuti['jenis'] ?? $jenis ?? '') ?>" required>
+        <?php
+            $jenisList = [
+                'Tahunan' => 'Cuti Tahunan',
+                'Sakit' => 'Cuti Sakit',
+                'Melahirkan' => 'Cuti Melahirkan',
+                'Penting' => 'Cuti Penting',
+            ];
+            $current = $cuti['jenis'] ?? $jenis ?? '';
+        ?>
+        <select name="jenis" class="form-control" required>
+            <option value="">-- pilih jenis --</option>
+            <?php foreach ($jenisList as $val => $label): ?>
+                <option value="<?= $val ?>" <?= $current === $val ? 'selected' : '' ?>><?= $label ?></option>
+            <?php endforeach; ?>
+        </select>
     </div>
     <div class="form-group">
         <label>Alasan</label>

@@ -26,4 +26,6 @@ Aplikasi sederhana sistem informasi kepegawaian berbasis [CodeIgniter 4](https:/
    ```
 6. Akses aplikasi melalui `http://localhost:8080`.
 
+Jenis cuti yang tersedia dapat disesuaikan pada berkas `app/Views/cuti/_form.php`.
+
 Database SQLite berada di `ci4app/writable/database.sqlite`.
