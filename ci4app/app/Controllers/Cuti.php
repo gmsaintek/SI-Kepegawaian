@@ -20,14 +20,19 @@ class Cuti extends BaseController
 
     public function index()
     {
-        $data['cuti'] = $this->cutiModel->getJoin()->findAll();
         $user = session('user');
+        $builder = $this->cutiModel->getJoin();
         if ($user['role'] === 'hr') {
             $data['pegawai'] = $this->employeeModel->findAll();
         } else {
             $emp = $this->employeeModel->findByName($user['name']);
-            $data['selected'] = $emp['id'] ?? null;
+            $pegawaiId = $emp['id'] ?? null;
+            $data['selected'] = $pegawaiId;
+            if ($pegawaiId !== null) {
+                $builder = $builder->where('cuti.pegawai_id', $pegawaiId);
+            }
         }
+        $data['cuti'] = $builder->findAll();
         return view('cuti/index', $data);
     }
 
