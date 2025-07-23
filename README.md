@@ -15,7 +15,8 @@ Aplikasi sederhana sistem informasi kepegawaian berbasis [CodeIgniter 4](https:/
    ```
 3. Atur nilai `GOOGLE_CLIENT_ID` dan `GOOGLE_CLIENT_SECRET` di file `.env`.
    Anda juga dapat menentukan email yang mendapat peran `hr` melalui variabel `HR_EMAILS` (pisahkan dengan koma).
-4. Jalankan migrasi untuk membuat tabel `users` menggunakan berkas `app/Database/Migrations/2025-07-21-000002_CreateUsersTable.php`:
+4. Jalankan perintah berikut untuk menjalankan seluruh migrasi sehingga
+   semua tabel yang dibutuhkan (misalnya `users` maupun `cuti_logs`) terbentuk:
    ```bash
    php spark migrate
    ```
@@ -24,5 +25,11 @@ Aplikasi sederhana sistem informasi kepegawaian berbasis [CodeIgniter 4](https:/
    php spark serve
    ```
 6. Akses aplikasi melalui `http://localhost:8080`.
+
+Jenis cuti yang tersedia dapat disesuaikan pada berkas `app/Views/cuti/_form.php`.
+
+Fitur presensi mandiri menggunakan kamera perangkat. Saat membuka menu
+"Presensi" sebagai karyawan, aplikasi akan meminta akses kamera dan foto
+diambil secara langsung tanpa perlu mengunggah berkas.
 
 Database SQLite berada di `ci4app/writable/database.sqlite`.

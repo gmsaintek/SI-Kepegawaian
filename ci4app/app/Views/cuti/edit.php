@@ -5,22 +5,27 @@ $this->extend('layout');
 <?php $this->section('content'); ?>
 <section class="content">
     <div class="container-fluid">
-        <form method="post" action="<?= site_url('cuti/update/' . $cuti['id']) ?>">
-            <?= csrf_field() ?>
-            <div class="form-group">
-                <label>Status</label>
-                <select name="status" class="form-control">
-                    <option value="Menunggu" <?= $cuti['status'] == 'Menunggu' ? 'selected' : '' ?>>Menunggu</option>
-                    <option value="Disetujui" <?= $cuti['status'] == 'Disetujui' ? 'selected' : '' ?>>Disetujui</option>
-                    <option value="Ditolak" <?= $cuti['status'] == 'Ditolak' ? 'selected' : '' ?>>Ditolak</option>
-                </select>
+        <div class="card shadow animate__animated animate__fadeInUp">
+            <div class="card-header">
+                <h3 class="card-title">Edit Cuti</h3>
             </div>
-            <div class="form-group">
-                <label>Alasan Penolakan</label>
-                <textarea name="alasan_penolakan" class="form-control"><?= esc($cuti['alasan_penolakan']) ?></textarea>
+            <div class="card-body">
+        <?php
+            $params = [
+                'action' => site_url('cuti/update/'.$cuti['id']),
+                'cuti'   => $cuti,
+                'submit' => 'Update',
+            ];
+            if (isset($pegawai)) {
+                $params['pegawai'] = $pegawai;
+            }
+            if (isset($selected)) {
+                $params['selected'] = $selected;
+            }
+            echo view('cuti/_form', $params);
+        ?>
             </div>
-            <button type="submit" class="btn btn-primary">Update</button>
-        </form>
+        </div>
     </div>
 </section>
 <?php $this->endSection(); ?>

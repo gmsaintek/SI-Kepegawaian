@@ -5,35 +5,23 @@ $this->extend('layout');
 <?php $this->section('content'); ?>
 <section class="content">
     <div class="container-fluid">
-        <form method="post" action="<?= site_url('cuti/save') ?>">
-            <?= csrf_field() ?>
-            <div class="form-group">
-                <label>Pegawai</label>
-                <select name="pegawai_id" class="form-control" required>
-                    <option value="">-- pilih pegawai --</option>
-                    <?php foreach($pegawai as $p): ?>
-                        <option value="<?= $p['id'] ?>"><?= esc($p['nama']) ?></option>
-                    <?php endforeach; ?>
-                </select>
+        <div class="card shadow animate__animated animate__fadeInUp">
+            <div class="card-header">
+                <h3 class="card-title">Ajukan Cuti</h3>
             </div>
-            <div class="form-group">
-                <label>Tanggal Awal</label>
-                <input type="date" name="tanggal_awal" class="form-control" required>
+            <div class="card-body">
+        <?php
+            $params = ['action' => site_url('cuti/save')];
+            if (isset($pegawai)) {
+                $params['pegawai'] = $pegawai;
+            }
+            if (isset($selected)) {
+                $params['selected'] = $selected;
+            }
+            echo view('cuti/_form', $params);
+        ?>
             </div>
-            <div class="form-group">
-                <label>Tanggal Akhir</label>
-                <input type="date" name="tanggal_akhir" class="form-control" required>
-            </div>
-            <div class="form-group">
-                <label>Jenis</label>
-                <input type="text" name="jenis" class="form-control" required>
-            </div>
-            <div class="form-group">
-                <label>Alasan</label>
-                <textarea name="alasan" class="form-control"></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">Simpan</button>
-        </form>
+        </div>
     </div>
 </section>
 <?php $this->endSection(); ?>
