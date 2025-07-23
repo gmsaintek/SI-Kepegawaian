@@ -36,7 +36,7 @@ $this->extend('layout');
                 <label>Dokumen (KTP/Kontrak)</label>
                 <input type="file" name="document" class="form-control-file">
                 <?php if ($pegawai['document']): ?>
-                    <p class="mt-2">Dokumen saat ini: <a href="<?= base_url('writable/'.$pegawai['document']) ?>" target="_blank">Lihat</a></p>
+                    <p class="mt-2">Dokumen saat ini: <a href="<?= base_url('uploads/'.basename($pegawai['document'])) ?>" target="_blank">Lihat</a></p>
                 <?php endif; ?>
             </div>
             <button type="submit" class="btn btn-primary"><i class="fas fa-save mr-1"></i>Update</button>

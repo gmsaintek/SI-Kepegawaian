@@ -53,7 +53,7 @@ $this->extend('layout');
                     <td><?= esc($row['status']) ?></td>
                     <td>
                         <?php if (!empty($row['photo'])): ?>
-                            <img src="<?= base_url('writable/'.$row['photo']) ?>" alt="foto" style="height:50px;">
+                            <img src="<?= base_url('uploads/'.basename($row['photo'])) ?>" alt="foto" style="height:50px;">
                         <?php endif; ?>
                     </td>
                     <td><?= esc($row['location']) ?></td>

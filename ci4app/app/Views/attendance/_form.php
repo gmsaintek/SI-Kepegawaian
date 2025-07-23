@@ -26,7 +26,7 @@
         <label>Foto</label>
         <input type="file" name="photo" accept="image/*" class="form-control-file">
         <?php if (!empty($presensi['photo'])): ?>
-            <p class="mt-2"><img src="<?= base_url('writable/'.$presensi['photo']) ?>" alt="foto" style="height:50px;"></p>
+            <p class="mt-2"><img src="<?= base_url('uploads/'.basename($presensi['photo'])) ?>" alt="foto" style="height:50px;"></p>
         <?php endif; ?>
     </div>
     <div class="form-group">
