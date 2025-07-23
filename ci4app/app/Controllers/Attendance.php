@@ -70,10 +70,17 @@ class Attendance extends BaseController
             return redirect()->back()->withInput();
         }
 
-        $photo = $this->request->getFile('photo');
         $photoPath = null;
-        if ($photo && $photo->isValid()) {
-            $photoPath = $photo->store('uploads');
+        $photoData = $this->request->getPost('photo_data');
+        if ($photoData) {
+            $photoData = preg_replace('#^data:image/\w+;base64,#', '', $photoData);
+            $photoPath = 'uploads/' . uniqid('photo_', true) . '.png';
+            file_put_contents(WRITEPATH . $photoPath, base64_decode($photoData));
+        } else {
+            $photo = $this->request->getFile('photo');
+            if ($photo && $photo->isValid()) {
+                $photoPath = $photo->store('uploads');
+            }
         }
 
         $this->attendanceModel->insert([

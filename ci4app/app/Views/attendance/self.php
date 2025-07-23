@@ -19,11 +19,17 @@ $this->extend('layout');
                     <?= esc(session()->getFlashdata('error')) ?>
                 </div>
             <?php endif; ?>
-            <form method="post" enctype="multipart/form-data" action="<?= site_url('attendance/selfSave') ?>">
+            <form method="post" action="<?= site_url('attendance/selfSave') ?>">
                 <?= csrf_field() ?>
                 <div class="form-group">
                     <label>Foto Selfie</label>
-                    <input type="file" name="photo" accept="image/*" capture="environment" class="form-control-file" required>
+                    <div class="mb-2">
+                        <video id="video" autoplay playsinline style="max-width: 240px;" class="border"></video>
+                        <canvas id="canvas" class="d-none"></canvas>
+                        <img id="preview" class="d-none mt-2 img-thumbnail" style="max-width: 240px;"/>
+                    </div>
+                    <button type="button" id="captureBtn" class="btn btn-secondary mb-2">Ambil Foto</button>
+                    <input type="hidden" name="photo_data" id="photoData" required>
                 </div>
                 <div class="form-group">
                     <label>Lokasi</label>
@@ -36,6 +42,36 @@ $this->extend('layout');
     </div>
 </div>
 <script>
+    // akses kamera dan ambil gambar
+    const video = document.getElementById('video');
+    const canvas = document.getElementById('canvas');
+    const preview = document.getElementById('preview');
+    const captureBtn = document.getElementById('captureBtn');
+    const photoInput = document.getElementById('photoData');
+
+    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+        navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream){
+            video.srcObject = stream;
+            video.play();
+        }).catch(function(err){
+            alert('Gagal mengakses kamera: ' + err.message);
+        });
+    } else {
+        alert('Peramban tidak mendukung kamera');
+    }
+
+    captureBtn.addEventListener('click', function(){
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+        const context = canvas.getContext('2d');
+        context.drawImage(video, 0, 0);
+        const dataURL = canvas.toDataURL('image/png');
+        preview.src = dataURL;
+        preview.classList.remove('d-none');
+        photoInput.value = dataURL;
+        captureBtn.textContent = 'Ulangi Foto';
+    });
+
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(pos){
             var coords = pos.coords.latitude + ',' + pos.coords.longitude;
