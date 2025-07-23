@@ -28,4 +28,8 @@ Aplikasi sederhana sistem informasi kepegawaian berbasis [CodeIgniter 4](https:/
 
 Jenis cuti yang tersedia dapat disesuaikan pada berkas `app/Views/cuti/_form.php`.
 
+Fitur presensi mandiri menggunakan kamera perangkat. Saat membuka menu
+"Presensi" sebagai karyawan, aplikasi akan meminta akses kamera dan foto
+diambil secara langsung tanpa perlu mengunggah berkas.
+
 Database SQLite berada di `ci4app/writable/database.sqlite`.
