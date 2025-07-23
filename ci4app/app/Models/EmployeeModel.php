@@ -18,4 +18,9 @@ class EmployeeModel extends Model
         'created_at',
         'updated_at',
     ];
+
+    public function findByName(string $name)
+    {
+        return $this->where('LOWER(nama)', strtolower($name), false)->first();
+    }
 }
