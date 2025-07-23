@@ -54,6 +54,8 @@
                     <?php if ($user && $user['role'] === 'hr'): ?>
                     <li class="nav-item"><a href="<?= site_url('employees') ?>" class="nav-link <?= url_is('employees*') ? 'active' : '' ?>"><i class="nav-icon fas fa-users"></i><p>Pegawai</p></a></li>
                     <li class="nav-item"><a href="<?= site_url('attendance') ?>" class="nav-link <?= url_is('attendance*') ? 'active' : '' ?>"><i class="nav-icon fas fa-calendar-check"></i><p>Presensi</p></a></li>
+                    <?php else: ?>
+                    <li class="nav-item"><a href="<?= site_url('attendance/self') ?>" class="nav-link <?= url_is('attendance/self') ? 'active' : '' ?>"><i class="nav-icon fas fa-calendar-check"></i><p>Presensi</p></a></li>
                     <?php endif; ?>
                     <li class="nav-item"><a href="<?= site_url('cuti') ?>" class="nav-link <?= url_is('cuti*') ? 'active' : '' ?>"><i class="nav-icon fas fa-plane"></i><p>Cuti</p></a></li>
                     <li class="nav-item"><a href="<?= site_url('profile') ?>" class="nav-link <?= url_is('profile*') ? 'active' : '' ?>"><i class="nav-icon fas fa-user-cog"></i><p>Pengaturan</p></a></li>

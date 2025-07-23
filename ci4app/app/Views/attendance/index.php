@@ -42,7 +42,7 @@ $this->extend('layout');
         </form>
         <table class="table table-bordered">
             <thead>
-            <tr><th>ID</th><th>Nama</th><th>Tanggal</th><th>Status</th><th>Aksi</th></tr>
+            <tr><th>ID</th><th>Nama</th><th>Tanggal</th><th>Status</th><th>Foto</th><th>Lokasi</th><th>Aksi</th></tr>
             </thead>
             <tbody>
             <?php foreach($presensi as $row): ?>
@@ -51,6 +51,12 @@ $this->extend('layout');
                     <td><?= esc($row['nama']) ?></td>
                     <td><?= esc($row['tanggal']) ?></td>
                     <td><?= esc($row['status']) ?></td>
+                    <td>
+                        <?php if (!empty($row['photo'])): ?>
+                            <img src="<?= base_url('writable/'.$row['photo']) ?>" alt="foto" style="height:50px;">
+                        <?php endif; ?>
+                    </td>
+                    <td><?= esc($row['location']) ?></td>
                     <td><button class="btn btn-sm btn-secondary" data-toggle="modal" data-target="#editModal<?= $row['id'] ?>"><i class="fas fa-edit mr-1"></i>Edit</button></td>
                 </tr>
             <?php endforeach; ?>
