@@ -7,7 +7,14 @@ class AttendanceModel extends Model
 {
     protected $table = 'presensi';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['pegawai_id','tanggal','status','created_at'];
+    protected $allowedFields = [
+        'pegawai_id',
+        'tanggal',
+        'status',
+        'photo',
+        'location',
+        'created_at',
+    ];
 
     public function getJoin()
     {
