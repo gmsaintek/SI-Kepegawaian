@@ -29,3 +29,6 @@ $routes->get('/auth/logout', 'Auth::logout');
 $routes->get('/dashboard', 'Dashboard::index', ['filter' => 'auth']);
 $routes->get('/profile', 'Profile::index', ['filter' => 'auth']);
 $routes->post('/profile/update', 'Profile::update', ['filter' => 'auth']);
+
+// serve uploaded files from writable directory
+$routes->get('/uploads/(:any)', 'Files::uploads/$1');
