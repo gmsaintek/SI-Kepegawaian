@@ -21,6 +21,6 @@ class EmployeeModel extends Model
 
     public function findByName(string $name)
     {
-        return $this->where('LOWER(nama)', strtolower($name), false)->first();
+        return $this->where('LOWER(nama) =', strtolower($name))->first();
     }
 }
