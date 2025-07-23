@@ -25,7 +25,7 @@ class Cuti extends BaseController
         if ($user['role'] === 'hr') {
             $data['pegawai'] = $this->employeeModel->findAll();
         } else {
-            $emp = $this->employeeModel->where('nama', $user['name'])->first();
+            $emp = $this->employeeModel->findByName($user['name']);
             $data['selected'] = $emp['id'] ?? null;
         }
         return view('cuti/index', $data);
@@ -37,7 +37,7 @@ class Cuti extends BaseController
         if ($user['role'] === 'hr') {
             $data['pegawai'] = $this->employeeModel->findAll();
         } else {
-            $emp = $this->employeeModel->where('nama', $user['name'])->first();
+            $emp = $this->employeeModel->findByName($user['name']);
             $data['selected'] = $emp['id'] ?? null;
         }
         return view('cuti/create', $data);
@@ -49,7 +49,7 @@ class Cuti extends BaseController
         // allow passing pegawai_id via form for all roles
         $pegawaiId = $this->request->getPost('pegawai_id');
         if (empty($pegawaiId) && $user['role'] !== 'hr') {
-            $emp = $this->employeeModel->where('nama', $user['name'])->first();
+            $emp = $this->employeeModel->findByName($user['name']);
             $pegawaiId = $emp['id'] ?? null;
         }
 
@@ -120,7 +120,7 @@ class Cuti extends BaseController
             }
             $pegawaiId = $this->request->getPost('pegawai_id');
             if (empty($pegawaiId)) {
-                $emp = $this->employeeModel->where('nama', $user['name'])->first();
+                $emp = $this->employeeModel->findByName($user['name']);
                 $pegawaiId = $emp['id'] ?? null;
             }
             $data = [
